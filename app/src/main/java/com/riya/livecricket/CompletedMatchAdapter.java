@@ -2,6 +2,7 @@ package com.riya.livecricket;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +23,7 @@ import java.util.TimeZone;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-class completedMatchAdapter extends PagerAdapter {
+class CompletedMatchAdapter extends PagerAdapter {
 
 
     // Context object
@@ -36,7 +37,7 @@ class completedMatchAdapter extends PagerAdapter {
 
 
     // Viewpager Constructor
-    public completedMatchAdapter(Context context, List<AllMatch.CompletedFixture> allMatches) {
+    public CompletedMatchAdapter(Context context, List<AllMatch.CompletedFixture> allMatches) {
         this.context = context;
         this.allMatches = allMatches;
         mLayoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -67,6 +68,7 @@ class completedMatchAdapter extends PagerAdapter {
         TextView won = itemView.findViewById(R.id.won);
         CircleImageView img_1 = itemView.findViewById(R.id.img_1);
         CircleImageView img_2 = itemView.findViewById(R.id.img_2);
+        LinearLayout li_click = itemView.findViewById(R.id.li_click);
 
         matchname.setText(allMatches.get(position).getName()+"|"+allMatches.get(position).getCompetition().getFormats().get(0).getDisplayName());
 
@@ -102,13 +104,13 @@ class completedMatchAdapter extends PagerAdapter {
                 .placeholder(R.mipmap.ic_launcher)
                 .error(R.mipmap.ic_launcher)
                 .into(img_2);
-//        SimpleDateFormat dateFormat = new SimpleDateFormat(allMatches.get(position).getStartDateTime());
-//        dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
-//        Date today = Calendar.getInstance().getTime();
-//        time.setText(dateFormat.format(today));
 
-//        day.setText(allMatches.get(position).getMatchDay());
-
+        li_click.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                context.startActivity(new Intent(context, CompletedMatchActivity.class));
+            }
+        });
 
         // Adding the View
         Objects.requireNonNull(container).addView(itemView);

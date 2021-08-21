@@ -22,24 +22,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Initializing the tablayout
         tabLayout = (TabLayout) findViewById(R.id.tabLayout);
 
-        //Adding the tabs using addTab() method
         tabLayout.addTab(tabLayout.newTab().setText("Matches"));
         tabLayout.addTab(tabLayout.newTab().setText("IPL"));
         tabLayout.addTab(tabLayout.newTab().setText("News"));
         tabLayout.addTab(tabLayout.newTab().setText("Fantasy"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
-        //Initializing viewPager
         viewPager = (ViewPager) findViewById(R.id.pager);
 
-        //Creating our pager adapter
         Pager adapter = new Pager(getSupportFragmentManager(), tabLayout.getTabCount());
-
-        //Adding adapter to pager
         viewPager.setAdapter(adapter);
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -58,56 +53,33 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-//        ApiInterface apiService = ApiClient.getClient("https://cricket.sportmonks.com/api/v2.0/").create(ApiInterface.class);
+
+
+
+//        ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
 //
-//        Call<Teams> call = apiService.getData("r7YcgVXSR7jSSiIMvlWjUNp2EQxmkarMEv2zrYScUqYVJWAvmOF43w89N5jX");
-//        call.enqueue(new Callback<Teams>() {
+//        Call<AllMatch> call = apiService.getAllMatch("12","12","12");
+//        call.enqueue(new Callback<AllMatch>() {
 //            @Override
-//            public void onResponse(Call<Teams>call, Response<Teams> response) {
+//            public void onResponse(Call<AllMatch> call, Response<AllMatch> response) {
 //
 //
-//                Teams team=response.body();
+////                AllMatch team = response.body();
 //
-//                team.getData().get(1).getName();
-//                Log.d("TAG", "Repose" + response.body());
+//
+//                Log.d("TAG", "Response" + response.body());
+////                Log.d("TAG", "Response" + team.getInProgressFixtures().get(0).getHomeTeam().getName());
+////                Log.d("TAG", "Response" + team.getInProgressFixtures().get(0).getAwayTeam().getName());
+//
+//
 //            }
 //
 //            @Override
-//            public void onFailure(Call<Teams>call, Throwable t) {
+//            public void onFailure(Call<AllMatch> call, Throwable t) {
 //                // Log error here since request failed
 //                Log.e("TAG", t.toString());
 //            }
 //        });
-
-
-
-        ApiInterface apiService = ApiClient.getClient("https://apiv2.cricket.com.au/web/views/").create(ApiInterface.class);
-
-        Call<AllMatch> call = apiService.getAllMatch();
-        call.enqueue(new Callback<AllMatch>() {
-            @Override
-            public void onResponse(Call<AllMatch> call, Response<AllMatch> response) {
-
-
-//                AllMatch team = response.body();
-
-
-                Log.d("TAG", "Response" + response.body());
-//                Log.d("TAG", "Response" + team.getInProgressFixtures().get(0).getHomeTeam().getName());
-//                Log.d("TAG", "Response" + team.getInProgressFixtures().get(0).getAwayTeam().getName());
-
-//                RecyclerView recyclerView=view.findViewById(R.id.recycleView_Curr);
-//                recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-//                recyclerView.setAdapter(new currentMatchAdapter(team.getInProgressFixtures(),getActivity()));
-
-            }
-
-            @Override
-            public void onFailure(Call<AllMatch> call, Throwable t) {
-                // Log error here since request failed
-                Log.e("TAG", t.toString());
-            }
-        });
 
 
 

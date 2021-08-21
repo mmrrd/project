@@ -1,9 +1,7 @@
 package com.riya.livecricket;
 
-import android.content.Context;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,9 +12,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -32,9 +27,9 @@ public class MatchFragment extends Fragment {
         final View view = inflater.inflate(R.layout.fragment_match, container, false);
 
 
-        ApiInterface apiService = ApiClient.getClient("https://apiv2.cricket.com.au/web/views/").create(ApiInterface.class);
+        ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
 
-        Call<AllMatch> call = apiService.getAllMatch();
+        Call<AllMatch> call = apiService.getAllMatch("12","12","12");
         call.enqueue(new Callback<AllMatch>() {
             @Override
             public void onResponse(Call<AllMatch> call, Response<AllMatch> response) {
@@ -44,10 +39,12 @@ public class MatchFragment extends Fragment {
 
 
                 Log.d("TAG", "Response" + response.body().getInProgressFixtures());
-                Log.d("TAG", "Response" + response.body().getInProgressFixtures().size());
-                Log.d("TAG", "Response" + team.getInProgressFixtures().size());
-                Log.d("TAG", "Response" + team.getInProgressFixtures().get(0).getHomeTeam().getShortName());
-                Log.d("TAG", "Response" + team.getInProgressFixtures().get(0).getAwayTeam().getShortName());
+                Log.d("TAG", "Response" + response.body().getUpcomingFixtures());
+                Log.d("TAG", "Response" + response.body().getCompletedFixtures());
+//                Log.d("TAG", "Response" + response.body().getInProgressFixtures().size());
+//                Log.d("TAG", "Response" + team.getInProgressFixtures().size());
+//                Log.d("TAG", "Response" + team.getInProgressFixtures().get(0).getHomeTeam().getShortName());
+//                Log.d("TAG", "Response" + team.getInProgressFixtures().get(0).getAwayTeam().getShortName());
 
                 RecyclerView recyclerView=view.findViewById(R.id.recycleView_Curr);
                 TextView noMatchLive=view.findViewById(R.id.noMatchLive);
@@ -57,7 +54,7 @@ public class MatchFragment extends Fragment {
 //                    recyclerView.setVisibility(View.VISIBLE);
 //                    noMatchLive.setVisibility(View.GONE);
                     recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-                    recyclerView.setAdapter(new currentMatchAdapter(team.getInProgressFixtures(),getActivity()));
+                    recyclerView.setAdapter(new CurrentMatchAdapter(team.getInProgressFixtures(),getActivity()));
 //                }
 //                else
 //                {
@@ -66,12 +63,12 @@ public class MatchFragment extends Fragment {
 //                }
 
                 ViewPager viewPager=view.findViewById(R.id.viewpager_upc);
-                viewPager.setAdapter(new upcomingMatchAdapter(getActivity(),team.getUpcomingFixtures()));
+                viewPager.setAdapter(new UpcomingMatchAdapter(getActivity(),team.getUpcomingFixtures()));
 
 
 
                 ViewPager viewPagerCo=view.findViewById(R.id.viewpager_compl);
-                viewPagerCo.setAdapter(new completedMatchAdapter(getActivity(),team.getCompletedFixtures()));
+                viewPagerCo.setAdapter(new CompletedMatchAdapter(getActivity(),team.getCompletedFixtures()));
 
             }
 

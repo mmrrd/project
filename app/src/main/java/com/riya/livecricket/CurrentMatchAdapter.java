@@ -1,10 +1,11 @@
 package com.riya.livecricket;
 
 import android.content.Context;
-import android.net.Uri;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,25 +17,25 @@ import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-class currentMatchAdapter extends RecyclerView.Adapter<currentMatchAdapter.MyView> {
+class CurrentMatchAdapter extends RecyclerView.Adapter<CurrentMatchAdapter.MyView> {
 
     List<AllMatch.InProgressFixture> allMatches;
     Context context;
 
-    public currentMatchAdapter(List<AllMatch.InProgressFixture> allMatches, Context context) {
+    public CurrentMatchAdapter(List<AllMatch.InProgressFixture> allMatches, Context context) {
         this.allMatches = allMatches;
         this.context = context;
     }
 
     @NonNull
     @Override
-    public currentMatchAdapter.MyView onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public CurrentMatchAdapter.MyView onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.layout_current_match, parent, false);
-        return new currentMatchAdapter.MyView(view);
+        return new CurrentMatchAdapter.MyView(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull currentMatchAdapter.MyView holder, int position) {
+    public void onBindViewHolder(@NonNull CurrentMatchAdapter.MyView holder, int position) {
 
         holder.match_1.setText(allMatches.get(position).getAwayTeam().getShortName());
         holder.match_2.setText(allMatches.get(position).getHomeTeam().getShortName());
@@ -52,6 +53,13 @@ class currentMatchAdapter extends RecyclerView.Adapter<currentMatchAdapter.MyVie
         holder.score_1.setText(allMatches.get(position).getInnings().get(0).getRunsScored()+"/"+allMatches.get(position).getInnings().get(0).getNumberOfWicketsFallen());
         holder.score_2.setText(allMatches.get(position).getInnings().get(0).getRunsScored()+"/"+allMatches.get(position).getInnings().get(0).getNumberOfWicketsFallen());
 
+        holder.liveMatch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                context.startActivity(new Intent(context,LiveMatchActivity.class));
+            }
+        });
+
     }
 
     @Override
@@ -63,6 +71,7 @@ class currentMatchAdapter extends RecyclerView.Adapter<currentMatchAdapter.MyVie
 
         TextView match_1, match_2,score_1,score_2;
         CircleImageView img1,img2;
+        LinearLayout liveMatch;
 
         public MyView(@NonNull View itemView) {
             super(itemView);
@@ -73,6 +82,7 @@ class currentMatchAdapter extends RecyclerView.Adapter<currentMatchAdapter.MyVie
             img2 = itemView.findViewById(R.id.img2);
             score_1 = itemView.findViewById(R.id.score_1);
             score_2 = itemView.findViewById(R.id.score_2);
+            liveMatch = itemView.findViewById(R.id.liveMatch);
         }
     }
 }

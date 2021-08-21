@@ -66,7 +66,7 @@
                 <androidx.viewpager.widget.ViewPager
                     android:id="@+id/viewpager_upc"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_160sdp" />
+                    android:layout_height="@dimen/_150sdp" />
 
             </LinearLayout>
 
@@ -89,7 +89,7 @@
                 <androidx.viewpager.widget.ViewPager
                     android:id="@+id/viewpager_compl"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_160sdp" />
+                    android:layout_height="@dimen/_150sdp" />
 
             </LinearLayout>
 

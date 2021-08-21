@@ -18,7 +18,7 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 import java.util.Objects;
 
-class upcomingMatchAdapter extends PagerAdapter {
+class UpcomingMatchAdapter extends PagerAdapter {
 
 
     // Context object
@@ -32,7 +32,7 @@ class upcomingMatchAdapter extends PagerAdapter {
 
 
     // Viewpager Constructor
-    public upcomingMatchAdapter(Context context, List<AllMatch.UpcomingFixture> allMatches) {
+    public UpcomingMatchAdapter(Context context, List<AllMatch.UpcomingFixture> allMatches) {
         this.context = context;
         this.allMatches = allMatches;
         mLayoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -63,7 +63,6 @@ class upcomingMatchAdapter extends PagerAdapter {
         ImageView img_2 = itemView.findViewById(R.id.img_2);
         TextView time = itemView.findViewById(R.id.time);
         TextView day = itemView.findViewById(R.id.day);
-        LinearLayout li_click = itemView.findViewById(R.id.li_click);
 
         matchname.setText(allMatches.get(position).getGameType()+"|"+allMatches.get(position).getCompetition().getFormats().get(0).getAssociatedMatchType());
 
@@ -79,25 +78,6 @@ class upcomingMatchAdapter extends PagerAdapter {
                 .error(R.mipmap.ic_launcher)
                 .into(img_2);
 
-
-
-//        SimpleDateFormat dateFormat = new SimpleDateFormat(allMatches.get(position).getStartDateTime());
-//        dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
-//        Date today = Calendar.getInstance().getTime();
-//        time.setText(dateFormat.format(today));
-
-//        DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-ddTHH:mm:ss.SSSZ", Locale.ENGLISH);
-//        DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("dd-MM-yyy", Locale.ENGLISH);
-//        LocalDate date = LocalDate.parse(allMatches.get(position).getStartDateTime(), inputFormatter);
-//        String formattedDate = outputFormatter.format(date);
-//        day.setText(formattedDate);
-
-        li_click.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                context.startActivity(new Intent(context, CompletedMatchActivity.class));
-            }
-        });
 
 
         // Adding the View
