@@ -1,7 +1,8 @@
-package com.riya.livecricket;
+package com.riya.livecricket.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,13 +12,16 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.riya.livecricket.LiveMatchActivity;
+import com.riya.livecricket.R;
+import com.riya.livecricket.modal.AllMatch;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-class CurrentMatchAdapter extends RecyclerView.Adapter<CurrentMatchAdapter.MyView> {
+public class CurrentMatchAdapter extends RecyclerView.Adapter<CurrentMatchAdapter.MyView> {
 
     List<AllMatch.InProgressFixture> allMatches;
     Context context;
@@ -35,7 +39,7 @@ class CurrentMatchAdapter extends RecyclerView.Adapter<CurrentMatchAdapter.MyVie
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CurrentMatchAdapter.MyView holder, int position) {
+    public void onBindViewHolder(@NonNull CurrentMatchAdapter.MyView holder, final int position) {
 
         holder.match_1.setText(allMatches.get(position).getAwayTeam().getShortName());
         holder.match_2.setText(allMatches.get(position).getHomeTeam().getShortName());
@@ -50,13 +54,19 @@ class CurrentMatchAdapter extends RecyclerView.Adapter<CurrentMatchAdapter.MyVie
                 .into(holder.img2);
 
 
-        holder.score_1.setText(allMatches.get(position).getInnings().get(0).getRunsScored()+"/"+allMatches.get(position).getInnings().get(0).getNumberOfWicketsFallen());
-        holder.score_2.setText(allMatches.get(position).getInnings().get(0).getRunsScored()+"/"+allMatches.get(position).getInnings().get(0).getNumberOfWicketsFallen());
+//        holder.score_1.setText(allMatches.get(position).getInnings().get(0).getRunsScored() + "/" + allMatches.get(position).getInnings().get(0).getNumberOfWicketsFallen());
+//        holder.score_2.setText(allMatches.get(position).getInnings().get(1).getRunsScored() + "/" + allMatches.get(position).getInnings().get(0).getNumberOfWicketsFallen());
 
         holder.liveMatch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                context.startActivity(new Intent(context,LiveMatchActivity.class));
+                Log.d("TAG", "onClick: " + allMatches.get(position).getInnings().get(0).getFixtureId());
+                Log.d("TAG", "onClick: " + allMatches.get(position).getInnings().get(0).getBattingTeamId());
+                Log.d("TAG", "onClick: " + allMatches.get(position).getInnings().get(0).getBowlingTeamId());
+                context.startActivity(new Intent(context, LiveMatchActivity.class)
+                        .putExtra("matchId",allMatches.get(position).getId())
+                        .putExtra("homeTeamId", allMatches.get(position).getHomeTeamId())
+                        .putExtra("awayTeamId", allMatches.get(position).getAwayTeamId()));
             }
         });
 
@@ -69,8 +79,8 @@ class CurrentMatchAdapter extends RecyclerView.Adapter<CurrentMatchAdapter.MyVie
 
     public class MyView extends RecyclerView.ViewHolder {
 
-        TextView match_1, match_2,score_1,score_2;
-        CircleImageView img1,img2;
+        TextView match_1, match_2, score_1, score_2;
+        CircleImageView img1, img2;
         LinearLayout liveMatch;
 
         public MyView(@NonNull View itemView) {

@@ -1,8 +1,7 @@
-package com.riya.livecricket;
+package com.riya.livecricket.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,12 +12,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
+import com.riya.livecricket.R;
+import com.riya.livecricket.modal.AllMatch;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 import java.util.Objects;
 
-class UpcomingMatchAdapter extends PagerAdapter {
+public class UpcomingMatchAdapter extends PagerAdapter {
 
 
     // Context object
@@ -64,7 +65,7 @@ class UpcomingMatchAdapter extends PagerAdapter {
         TextView time = itemView.findViewById(R.id.time);
         TextView day = itemView.findViewById(R.id.day);
 
-        matchname.setText(allMatches.get(position).getGameType()+"|"+allMatches.get(position).getCompetition().getFormats().get(0).getAssociatedMatchType());
+        matchname.setText(allMatches.get(position).getGameType() + "|" + allMatches.get(position).getCompetition().getFormats().get(0).getAssociatedMatchType());
 
         match_1.setText(allMatches.get(position).getAwayTeam().getShortName());
         match_2.setText(allMatches.get(position).getHomeTeam().getShortName());
@@ -79,7 +80,6 @@ class UpcomingMatchAdapter extends PagerAdapter {
                 .into(img_2);
 
 
-
         // Adding the View
         Objects.requireNonNull(container).addView(itemView);
 
@@ -92,6 +92,3 @@ class UpcomingMatchAdapter extends PagerAdapter {
         container.removeView((LinearLayout) object);
     }
 }
-
-
-

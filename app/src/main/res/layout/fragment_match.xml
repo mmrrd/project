@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MatchFragment">
+    tools:context=".fragment.MatchFragment">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -61,12 +61,23 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
                 <androidx.viewpager.widget.ViewPager
                     android:id="@+id/viewpager_upc"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_150sdp" />
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tab_layout1"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_6sdp"
+                    app:tabBackground="@drawable/tab_selector"
+                    app:tabGravity="center"
+                    android:fadeScrollbars="true"
+                    android:layout_marginBottom="@dimen/_4sdp"
+                    app:tabIndicatorHeight="0dp"/>
 
             </LinearLayout>
 
@@ -90,6 +101,15 @@
                     android:id="@+id/viewpager_compl"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_150sdp" />
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tab_layout2"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_6sdp"
+                    app:tabBackground="@drawable/tab_selector"
+                    app:tabGravity="center"
+                    android:layout_marginBottom="@dimen/_4sdp"
+                    app:tabIndicatorHeight="0dp"/>
 
             </LinearLayout>
 

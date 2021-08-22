@@ -1,4 +1,4 @@
-package com.riya.livecricket;
+package com.riya.livecricket.modal;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

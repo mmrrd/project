@@ -4,13 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
-import android.util.Log;
+import android.view.View;
 
 import com.google.android.material.tabs.TabLayout;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -54,6 +50,15 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+        findViewById(R.id.refresh).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Pager adapter = new Pager(getSupportFragmentManager(), tabLayout.getTabCount());
+                viewPager.setAdapter(adapter);
+                viewPager.setCurrentItem(tabLayout.getSelectedTabPosition());
+                adapter.notifyDataSetChanged();
+            }
+        });
 
 
 //        ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);

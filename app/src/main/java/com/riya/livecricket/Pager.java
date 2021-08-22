@@ -4,6 +4,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
+import com.riya.livecricket.fragment.FantasyFragment;
+import com.riya.livecricket.fragment.IplFragment;
+import com.riya.livecricket.fragment.MatchFragment;
+import com.riya.livecricket.fragment.NewsFragment;
+
 public class Pager extends FragmentStatePagerAdapter {
     
     //integer to count number of tabs
@@ -25,13 +30,13 @@ public class Pager extends FragmentStatePagerAdapter {
                 MatchFragment tab1 = new MatchFragment();
                 return tab1;
             case 1:
-                MatchFragment tab2 = new MatchFragment();
+                IplFragment tab2 = new IplFragment();
                 return tab2;
             case 2:
-                MatchFragment tab3 = new MatchFragment();
+                NewsFragment tab3 = new NewsFragment();
                 return tab3;
             case 3:
-                MatchFragment tab4 = new MatchFragment();
+                FantasyFragment tab4 = new FantasyFragment();
                 return tab4;
             default:
                 return null;

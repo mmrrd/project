@@ -1,4 +1,4 @@
-package com.riya.livecricket;
+package com.riya.livecricket.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -9,21 +9,22 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
+import com.riya.livecricket.modal.AllMatch;
+import com.riya.livecricket.CompletedMatchActivity;
+import com.riya.livecricket.R;
 import com.squareup.picasso.Picasso;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import java.util.Objects;
-import java.util.TimeZone;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-class CompletedMatchAdapter extends PagerAdapter {
+public class CompletedMatchAdapter extends PagerAdapter {
+
 
 
     // Context object
@@ -87,7 +88,7 @@ class CompletedMatchAdapter extends PagerAdapter {
             score2=allMatches.get(position).getInnings().get(1).getRunsScored()+"/"+allMatches.get(position).getInnings().get(1).getNumberOfWicketsFallen();
         }
         else
-            {
+        {
             score2=allMatches.get(position).getInnings().get(0).getRunsScored()+"/"+allMatches.get(position).getInnings().get(0).getNumberOfWicketsFallen();
         }
 
@@ -108,7 +109,10 @@ class CompletedMatchAdapter extends PagerAdapter {
         li_click.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                context.startActivity(new Intent(context, CompletedMatchActivity.class));
+                context.startActivity(new Intent(context, CompletedMatchActivity.class)
+                        .putExtra("matchId",allMatches.get(position).getId())
+                        .putExtra("homeTeamId", allMatches.get(position).getHomeTeamId())
+                        .putExtra("awayTeamId", allMatches.get(position).getAwayTeamId()));
             }
         });
 
@@ -124,6 +128,3 @@ class CompletedMatchAdapter extends PagerAdapter {
         container.removeView((LinearLayout) object);
     }
 }
-
-
-

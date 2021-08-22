@@ -1,9 +1,16 @@
 package com.riya.livecricket;
 
+import com.riya.livecricket.modal.AllMatch;
+import com.riya.livecricket.modal.DetailModal;
+import com.riya.livecricket.modal.PointTable;
+import com.riya.livecricket.modal.Predictions;
+
 import retrofit2.Call;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
-import retrofit2.http.Query;
+import retrofit2.http.PATCH;
+import retrofit2.http.POST;
 
 public interface ApiInterface {
 
@@ -15,6 +22,13 @@ public interface ApiInterface {
                                @Header("UpcomingFixturesCount") String UpcomingFixturesCount);
 
     @GET("scorecard?FixtureId=10744")
-    Call<AllMatch> getMatchDetail(@Query("FixtureId") String FixtureId);
+    Call<DetailModal> getMatchDetail(@Header("FixtureId") String FixtureId);
+
+
+    @POST("prediction.php")
+    Call<Predictions> getPrediction();
+
+    @POST("pointslist.php")
+    Call<PointTable> getPoniTabele();
 
 }
