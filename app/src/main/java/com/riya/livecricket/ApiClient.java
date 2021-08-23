@@ -18,19 +18,11 @@ public class ApiClient {
         if (retrofit==null) {
             retrofit = new Retrofit.Builder()
                     .baseUrl(str)
-                    .addConverterFactory(GsonConverterFactory.create(new GsonBuilder().setLenient().create()))
+                    .client(new OkHttpClient.Builder().build())
+                    .addConverterFactory(GsonConverterFactory.create())
                     .build();
         }
         return retrofit;
     }
-//    public static Retrofit getClient1(String str) {
-//        if (retrofit==null) {
-//            retrofit = new Retrofit.Builder()
-//                    .baseUrl(str)
-//                    .client(new OkHttpClient.Builder().build())
-//                    .addConverterFactory(GsonConverterFactory.create())
-//                    .build();
-//        }
-//        return retrofit;
-//    }
+
 }

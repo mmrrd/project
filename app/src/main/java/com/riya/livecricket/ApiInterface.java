@@ -6,29 +6,25 @@ import com.riya.livecricket.modal.PointTable;
 import com.riya.livecricket.modal.Predictions;
 
 import retrofit2.Call;
-import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
-import retrofit2.http.Header;
-import retrofit2.http.PATCH;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 public interface ApiInterface {
 
+    @GET("fixtures?")
+    Call<AllMatch> getAllMatch(@Query("CompletedFixturesCount") String CompletedFixturesCount,
+                               @Query("InProgressFixturesCount") String InProgressFixturesCount,
+                               @Query("UpcomingFixturesCount") String UpcomingFixturesCount);
+
+    @GET("scorecard?jsconfig=eccn:true&")
+    Call<DetailModal> getMatchDetail(@Query("FixtureId") String FixtureId);
 
 
-    @GET("fixtures?CompletedFixturesCount=12&InProgressFixturesCount=12&UpcomingFixturesCount=12")
-    Call<AllMatch> getAllMatch(@Header("CompletedFixturesCount") String CompletedFixturesCount,
-                               @Header("InProgressFixturesCount") String InProgressFixturesCount,
-                               @Header("UpcomingFixturesCount") String UpcomingFixturesCount);
-
-    @GET("scorecard?FixtureId=10744")
-    Call<DetailModal> getMatchDetail(@Header("FixtureId") String FixtureId);
-
-
-    @POST("prediction.php")
+    @GET("prediction.php")
     Call<Predictions> getPrediction();
 
-    @POST("pointslist.php")
+    @GET("pointslist.php")
     Call<PointTable> getPoniTabele();
 
 }

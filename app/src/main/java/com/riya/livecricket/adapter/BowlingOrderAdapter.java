@@ -2,6 +2,7 @@ package com.riya.livecricket.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -67,17 +68,29 @@ public class BowlingOrderAdapter extends PagerAdapter {
         TextView text = itemView.findViewById(R.id.text);
         ImageView img = itemView.findViewById(R.id.img);
 
-        for (int i=0;i<=playerList.size();i++)
+        for (int i=0;i<playerList.size();i++)
         {
-            if (detailModals.get(position).getPlayerId() == playerList.get(i).getId())
+            if (detailModals.get(position).getPlayerId().equals(playerList.get(i).getId()))
             {
+                Log.d("TAG", "instantiateItem: "+i);
+                Log.d("TAG", "instantiateItem: "+playerList.get(i).getDisplayName());
+                Log.d("TAG", "instantiateItem:1 "+playerList.get(i).getOrder());
                 name.setText(playerList.get(i).getDisplayName());
-                Picasso.with(context).load(playerList.get(i).getImageUrl()).into(img);
+
+                if (!playerList.get(i).getImageUrl().equals("")) {
+                    Picasso.with(context).load(playerList.get(i).getImageUrl())
+                            .placeholder(R.mipmap.ic_launcher)
+                            .error(R.mipmap.ic_launcher)
+                            .into(img);
+//                    Picasso.with(context).load(playerList.get(i).getImageUrl()).into(img);
+                }
+
             }
         }
 
 
-        score.setText(detailModals.get(position).getOversBowled()+" Runs / "+detailModals.get(position).getRunsConceded()+" Runs");
+
+        score.setText(detailModals.get(position).getOversBowled()+" overs / "+detailModals.get(position).getRunsConceded()+" Runs");
         details.setText("M: "+detailModals.get(position).getMaidensBowled()+"W: "+detailModals.get(position).getWicketsTaken()+"SR: "+detailModals.get(position).getIsOnStrike());
         order.setText("");
         text.setText("Took "+detailModals.get(position).getWicketsTaken()+" Wickets");

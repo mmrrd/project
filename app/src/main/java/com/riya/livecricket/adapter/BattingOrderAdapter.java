@@ -2,6 +2,7 @@ package com.riya.livecricket.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -67,20 +68,39 @@ public class BattingOrderAdapter extends PagerAdapter {
         TextView text = itemView.findViewById(R.id.text);
         ImageView img = itemView.findViewById(R.id.img);
 
-        for (int i=0;i<=playerList.size();i++)
+        Log.d("TAG", "instantiateItem: "+playerList.size());
+        for (int i=0;i<playerList.size();i++)
         {
-            if (detailModals.get(position).getPlayerId() == playerList.get(i).getId())
+            if (detailModals.get(position).getPlayerId().equals(playerList.get(i).getId()))
             {
+                Log.d("TAG", "instantiateItem: "+i);
+                Log.d("TAG", "instantiateItem: "+playerList.get(i).getDisplayName());
+                Log.d("TAG", "instantiateItem:1 "+playerList.get(i).getOrder());
+                Log.d("TAG", "instantiateItem:1 "+detailModals.get(position).getBattingOrder());
                 name.setText(playerList.get(i).getDisplayName());
-                Picasso.with(context).load(playerList.get(i).getImageUrl()).into(img);
+
+                if (!playerList.get(i).getImageUrl().equals("")) {
+
+                    Picasso.with(context).load(playerList.get(i).getImageUrl()).into(img);
+                }
+
+//                    order.setText(detailModals.get(position).getBattingOrder());
+
             }
         }
 
 
-        score.setText(detailModals.get(position).getRunsScored()+" Runs / "+detailModals.get(position).getBallsFaced());
+        score.setText(detailModals.get(position).getRunsScored()+" Runs / "+detailModals.get(position).getBallsFaced()+" Balls");
         details.setText("4's: "+detailModals.get(position).getFoursScored()+"6's: "+detailModals.get(position).getSixesScored()+"SR: "+detailModals.get(position).getStrikeRate());
-        order.setText(detailModals.get(position).getBattingOrder());
+
+
+
+
+
+        Log.d("TAG", "instantiateItem: "+detailModals.get(position));
+
         text.setText(detailModals.get(position).getDismissalText());
+//        Picasso.with(context).load(playerList.get(0).getImageUrl()).into(img);
 
         // Adding the View
         Objects.requireNonNull(container).addView(itemView);

@@ -40,6 +40,7 @@ public class LiveMatchActivity extends AppCompatActivity {
         Log.d("TAG", "onCreate: "+homeTeamId);
         Log.d("TAG", "onCreate: "+awayTeamId);
         Log.d("TAG", "onCreate: "+matchId);
+        Log.d("TAG", "onCreate: "+String.valueOf(matchId));
 
 
         teamImg1=findViewById(R.id.teamImg1);
@@ -55,35 +56,35 @@ public class LiveMatchActivity extends AppCompatActivity {
         next=findViewById(R.id.next);
 
 
-//        back.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (count==0)
-//                {
-//                    inning.setText("2nd "+details.getFixture().getAwayTeam().getShortName()+" "+details.getFixture().getInnings().get(1).getRunsScored()+"/"+details.getFixture().getInnings().get(1).getNumberOfWicketsFallen());
-//                    ViewPager viewPager=findViewById(R.id.battingOrder);
-//                    viewPager.setAdapter(new BattingOrderAdapter(LiveMatchActivity.this,details.getFixture().getInnings().get(1).getBatsmen(),details.getPlayers()));
-//                    ViewPager viewPager1=findViewById(R.id.bowling);
-//                    viewPager1.setAdapter(new BowlingOrderAdapter(LiveMatchActivity.this,details.getFixture().getInnings().get(1).getBowlers(),details.getPlayers()));
-//                    count=1;
-//                }
-//
-//            }
-//        });
-//        next.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (count==1)
-//                {
-//                    inning.setText("1nd "+details.getFixture().getHomeTeam().getShortName()+" "+details.getFixture().getInnings().get(0).getRunsScored()+"/"+details.getFixture().getInnings().get(0).getNumberOfWicketsFallen());
-//                    ViewPager viewPager=findViewById(R.id.battingOrder);
-//                    viewPager.setAdapter(new BattingOrderAdapter(LiveMatchActivity.this,details.getFixture().getInnings().get(0).getBatsmen(),details.getPlayers()));
-//                    ViewPager viewPager1=findViewById(R.id.bowling);
-//                    viewPager1.setAdapter(new BowlingOrderAdapter(LiveMatchActivity.this,details.getFixture().getInnings().get(0).getBowlers(),details.getPlayers()));
-//                    count=0;
-//                }
-//            }
-//        });
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (count==1)
+                {
+                    inning.setText("2nd "+details.getFixture().getAwayTeam().getShortName()+" "+details.getFixture().getInnings().get(1).getRunsScored()+"/"+details.getFixture().getInnings().get(1).getNumberOfWicketsFallen());
+                    ViewPager viewPager=findViewById(R.id.battingOrder);
+                    viewPager.setAdapter(new BattingOrderAdapter(LiveMatchActivity.this,details.getFixture().getInnings().get(1).getBatsmen(),details.getPlayers()));
+                    ViewPager viewPager1=findViewById(R.id.bowling);
+                    viewPager1.setAdapter(new BowlingOrderAdapter(LiveMatchActivity.this,details.getFixture().getInnings().get(1).getBowlers(),details.getPlayers()));
+                    count=0;
+                }
+
+            }
+        });
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (count==0)
+                {
+                    inning.setText("1nd "+details.getFixture().getHomeTeam().getShortName()+" "+details.getFixture().getInnings().get(0).getRunsScored()+"/"+details.getFixture().getInnings().get(0).getNumberOfWicketsFallen());
+                    ViewPager viewPager=findViewById(R.id.battingOrder);
+                    viewPager.setAdapter(new BattingOrderAdapter(LiveMatchActivity.this,details.getFixture().getInnings().get(0).getBatsmen(),details.getPlayers()));
+                    ViewPager viewPager1=findViewById(R.id.bowling);
+                    viewPager1.setAdapter(new BowlingOrderAdapter(LiveMatchActivity.this,details.getFixture().getInnings().get(0).getBowlers(),details.getPlayers()));
+                    count=1;
+                }
+            }
+        });
 
 
         ApiInterface apiService = ApiClient.getClient("https://apiv2.cricket.com.au/web/views/").create(ApiInterface.class);
@@ -94,34 +95,37 @@ public class LiveMatchActivity extends AppCompatActivity {
             public void onResponse(Call<DetailModal> call, Response<DetailModal> response) {
 
 
-//                details = response.body();
+                details = response.body();
 
                 Log.d("TAG", "onResponse: "+response.body());
 
-//                Picasso.with(LiveMatchActivity.this).load(details.getFixture().getHomeTeam().getLogoUrl())
-//                        .placeholder(R.mipmap.ic_launcher)
-//                        .error(R.mipmap.ic_launcher)
-//                        .into(teamImg1);
-//
-//                Picasso.with(LiveMatchActivity.this).load(details.getFixture().getAwayTeam().getLogoUrl())
-//                        .placeholder(R.mipmap.ic_launcher)
-//                        .error(R.mipmap.ic_launcher)
-//                        .into(teamImg2);
-//
-//                name1.setText(details.getFixture().getHomeTeam().getName());
-//                name2.setText(details.getFixture().getAwayTeam().getName());
-//                score1.setText(details.getFixture().getInnings().get(0).getRunsScored()+"/"+details.getFixture().getInnings().get(0).getNumberOfWicketsFallen()+"("+details.getFixture().getInnings().get(0).getOversBowled()+")");
-//                score2.setText(details.getFixture().getInnings().get(1).getRunsScored()+"/"+details.getFixture().getInnings().get(1).getNumberOfWicketsFallen()+"("+details.getFixture().getInnings().get(1).getOversBowled()+")");
-//
-//                tossResult.setText(details.getFixture().getTossResult());
-//                venue.setText(details.getFixture().getGameType()+"|"+details.getFixture().getVenue().getName());
-//                inning.setText("1nd "+details.getFixture().getHomeTeam().getShortName()+" "+details.getFixture().getInnings().get(0).getRunsScored()+"/"+details.getFixture().getInnings().get(0).getNumberOfWicketsFallen());
-//
-//                ViewPager viewPager=findViewById(R.id.battingOrder);
-//                viewPager.setAdapter(new BattingOrderAdapter(LiveMatchActivity.this,details.getFixture().getInnings().get(0).getBatsmen(),details.getPlayers()));
-//
-//                ViewPager viewPager1=findViewById(R.id.bowling);
-//                viewPager1.setAdapter(new BowlingOrderAdapter(LiveMatchActivity.this,details.getFixture().getInnings().get(0).getBowlers(),details.getPlayers()));
+                Picasso.with(LiveMatchActivity.this).load(details.getFixture().getHomeTeam().getLogoUrl())
+                        .placeholder(R.mipmap.ic_launcher)
+                        .error(R.mipmap.ic_launcher)
+                        .into(teamImg1);
+
+                Picasso.with(LiveMatchActivity.this).load(details.getFixture().getAwayTeam().getLogoUrl())
+                        .placeholder(R.mipmap.ic_launcher)
+                        .error(R.mipmap.ic_launcher)
+                        .into(teamImg2);
+
+                name1.setText(details.getFixture().getHomeTeam().getName());
+                name2.setText(details.getFixture().getAwayTeam().getName());
+                score1.setText(details.getFixture().getInnings().get(0).getRunsScored()+"/"+details.getFixture().getInnings().get(0).getNumberOfWicketsFallen()+"("+details.getFixture().getInnings().get(0).getOversBowled()+")");
+                score2.setText(details.getFixture().getInnings().get(1).getRunsScored()+"/"+details.getFixture().getInnings().get(1).getNumberOfWicketsFallen()+"("+details.getFixture().getInnings().get(1).getOversBowled()+")");
+
+                tossResult.setText(details.getFixture().getTossResult());
+                venue.setText(details.getFixture().getGameType()+"|"+details.getFixture().getVenue().getName());
+                inning.setText("1nd "+details.getFixture().getHomeTeam().getShortName()+" "+details.getFixture().getInnings().get(0).getRunsScored()+"/"+details.getFixture().getInnings().get(0).getNumberOfWicketsFallen());
+
+                Log.d("TAG", "onResponse: "+details.getPlayers().get(0).getId());
+                Log.d("TAG", "onResponse: "+details.getPlayers().get(0).getDisplayName());
+
+                ViewPager viewPager=findViewById(R.id.battingOrder);
+                viewPager.setAdapter(new BattingOrderAdapter(LiveMatchActivity.this,details.getFixture().getInnings().get(0).getBatsmen(),details.getPlayers()));
+
+                ViewPager viewPager1=findViewById(R.id.bowling);
+                viewPager1.setAdapter(new BowlingOrderAdapter(LiveMatchActivity.this,details.getFixture().getInnings().get(0).getBowlers(),details.getPlayers()));
 
 
             }

@@ -276,7 +276,7 @@
                 <androidx.viewpager.widget.ViewPager
                     android:id="@+id/battingOrder"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/_130sdp"
                     android:padding="@dimen/_10sdp" />
 
 
@@ -292,7 +292,7 @@
                 <androidx.viewpager.widget.ViewPager
                     android:id="@+id/bowling"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/_130sdp"
                     android:padding="@dimen/_10sdp" />
 
             </LinearLayout>

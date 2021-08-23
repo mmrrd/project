@@ -7,9 +7,15 @@ import java.util.List;
 
 public class DetailModal {
 
-    @SerializedName("Fixture")
+    @SerializedName("fixture")
     @Expose
     private Fixture fixture;
+    @SerializedName("players")
+    @Expose
+    private List<Player> players = null;
+    @SerializedName("responseError")
+    @Expose
+    private Boolean responseError;
 
     public Fixture getFixture() {
         return fixture;
@@ -18,13 +24,6 @@ public class DetailModal {
     public void setFixture(Fixture fixture) {
         this.fixture = fixture;
     }
-
-    @SerializedName("Players")
-    @Expose
-    private List<Player> players = null;
-    @SerializedName("ResponseError")
-    @Expose
-    private Boolean responseError;
 
     public List<Player> getPlayers() {
         return players;
@@ -42,46 +41,45 @@ public class DetailModal {
         this.responseError = responseError;
     }
 
-
     public class AwayTeam {
 
-        @SerializedName("Id")
+        @SerializedName("id")
         @Expose
         private Integer id;
-        @SerializedName("Name")
+        @SerializedName("name")
         @Expose
         private String name;
-        @SerializedName("ShortName")
+        @SerializedName("shortName")
         @Expose
         private String shortName;
-        @SerializedName("TeamColor")
+        @SerializedName("teamColor")
         @Expose
         private String teamColor;
-        @SerializedName("LogoUrl")
+        @SerializedName("logoUrl")
         @Expose
         private String logoUrl;
-        @SerializedName("BackgroundImageUrl")
+        @SerializedName("backgroundImageUrl")
         @Expose
         private String backgroundImageUrl;
-        @SerializedName("TeambadgeImageUrl")
+        @SerializedName("teambadgeImageUrl")
         @Expose
         private String teambadgeImageUrl;
-        @SerializedName("IsHomeTeam")
+        @SerializedName("isHomeTeam")
         @Expose
         private Boolean isHomeTeam;
-        @SerializedName("IsTossWinner")
+        @SerializedName("isTossWinner")
         @Expose
         private Boolean isTossWinner;
-        @SerializedName("IsMatchWinner")
+        @SerializedName("isMatchWinner")
         @Expose
         private Boolean isMatchWinner;
-        @SerializedName("BattingBonus")
+        @SerializedName("battingBonus")
         @Expose
         private Integer battingBonus;
-        @SerializedName("BowlingBonus")
+        @SerializedName("bowlingBonus")
         @Expose
         private Integer bowlingBonus;
-        @SerializedName("IsActive")
+        @SerializedName("isActive")
         @Expose
         private Boolean isActive;
 
@@ -192,54 +190,54 @@ public class DetailModal {
     }
     public class Batsman {
 
-        @SerializedName("PlayerId")
+        @SerializedName("playerId")
         @Expose
         private Integer playerId;
-        @SerializedName("BallsFaced")
+        @SerializedName("ballsFaced")
         @Expose
         private Integer ballsFaced;
-        @SerializedName("BowledByPlayerId")
+        @SerializedName("bowledByPlayerId")
         @Expose
         private Integer bowledByPlayerId;
-        @SerializedName("DismissalTypeId")
+        @SerializedName("dismissalTypeId")
         @Expose
         private String dismissalTypeId;
-        @SerializedName("DismissedByPlayerId")
+        @SerializedName("dismissedByPlayerId")
         @Expose
         private Integer dismissedByPlayerId;
-        @SerializedName("DismissalText")
+        @SerializedName("dismissalText")
         @Expose
         private String dismissalText;
-        @SerializedName("BattingStartDay")
+        @SerializedName("battingStartDay")
         @Expose
         private Integer battingStartDay;
-        @SerializedName("FoursScored")
+        @SerializedName("foursScored")
         @Expose
         private Integer foursScored;
-        @SerializedName("SixesScored")
+        @SerializedName("sixesScored")
         @Expose
         private Integer sixesScored;
-        @SerializedName("RunsScored")
+        @SerializedName("runsScored")
         @Expose
         private Integer runsScored;
-        @SerializedName("BattingMinutes")
+        @SerializedName("battingMinutes")
         @Expose
         private Integer battingMinutes;
-        @SerializedName("IsOnStrike")
+        @SerializedName("isOnStrike")
         @Expose
         private Boolean isOnStrike;
-        @SerializedName("IsBatting")
+        @SerializedName("isBatting")
         @Expose
         private Boolean isBatting;
-        @SerializedName("BattingOrder")
+        @SerializedName("battingOrder")
         @Expose
         private Integer battingOrder;
-        @SerializedName("IsOut")
+        @SerializedName("isOut")
         @Expose
         private Boolean isOut;
-        @SerializedName("StrikeRate")
+        @SerializedName("strikeRate")
         @Expose
-        private Integer strikeRate;
+        private double strikeRate;
 
         public Integer getPlayerId() {
             return playerId;
@@ -361,7 +359,7 @@ public class DetailModal {
             this.isOut = isOut;
         }
 
-        public Integer getStrikeRate() {
+        public double getStrikeRate() {
             return strikeRate;
         }
 
@@ -372,45 +370,45 @@ public class DetailModal {
     }
     public class Bowler {
 
-        @SerializedName("PlayerId")
+        @SerializedName("playerId")
         @Expose
         private Integer playerId;
-        @SerializedName("OversBowled")
+        @SerializedName("oversBowled")
         @Expose
         private String oversBowled;
-        @SerializedName("MaidensBowled")
+        @SerializedName("maidensBowled")
         @Expose
         private Integer maidensBowled;
-        @SerializedName("BallsBowled")
+        @SerializedName("ballsBowled")
         @Expose
         private Integer ballsBowled;
-        @SerializedName("DotBalls")
+        @SerializedName("dotBalls")
         @Expose
         private Integer dotBalls;
-        @SerializedName("NoBalls")
+        @SerializedName("noBalls")
         @Expose
         private Integer noBalls;
-        @SerializedName("WideBalls")
+        @SerializedName("wideBalls")
         @Expose
         private Integer wideBalls;
-        @SerializedName("Order")
+        @SerializedName("order")
         @Expose
         private Integer order;
-        @SerializedName("RunsConceded")
+        @SerializedName("runsConceded")
         @Expose
         private Integer runsConceded;
-        @SerializedName("WicketsTaken")
+        @SerializedName("wicketsTaken")
         @Expose
         private Integer wicketsTaken;
-        @SerializedName("IsOnStrike")
+        @SerializedName("isOnStrike")
         @Expose
         private Boolean isOnStrike;
-        @SerializedName("IsNonStrike")
+        @SerializedName("isNonStrike")
         @Expose
         private Boolean isNonStrike;
-        @SerializedName("Economy")
+        @SerializedName("economy")
         @Expose
-        private Integer economy;
+        private double economy;
 
         public Integer getPlayerId() {
             return playerId;
@@ -508,7 +506,7 @@ public class DetailModal {
             this.isNonStrike = isNonStrike;
         }
 
-        public Integer getEconomy() {
+        public double getEconomy() {
             return economy;
         }
 
@@ -519,64 +517,64 @@ public class DetailModal {
     }
     public class Competition {
 
-        @SerializedName("Id")
+        @SerializedName("id")
         @Expose
         private Integer id;
-        @SerializedName("Name")
+        @SerializedName("name")
         @Expose
         private String name;
-        @SerializedName("Url")
+        @SerializedName("url")
         @Expose
         private String url;
-        @SerializedName("ImageUrl")
+        @SerializedName("imageUrl")
         @Expose
         private String imageUrl;
-        @SerializedName("BannerImageUrl")
+        @SerializedName("bannerImageUrl")
         @Expose
         private String bannerImageUrl;
-        @SerializedName("DrinksNotificationEnabled")
+        @SerializedName("drinksNotificationEnabled")
         @Expose
         private Boolean drinksNotificationEnabled;
-        @SerializedName("Order")
+        @SerializedName("order")
         @Expose
         private Integer order;
-        @SerializedName("TwitterHandle")
+        @SerializedName("twitterHandle")
         @Expose
         private String twitterHandle;
-        @SerializedName("StartDateTime")
+        @SerializedName("startDateTime")
         @Expose
         private String startDateTime;
-        @SerializedName("EndDateTime")
+        @SerializedName("endDateTime")
         @Expose
         private String endDateTime;
-        @SerializedName("ThemeUrl")
+        @SerializedName("themeUrl")
         @Expose
         private String themeUrl;
-        @SerializedName("ViewerVerdict")
+        @SerializedName("viewerVerdict")
         @Expose
         private Boolean viewerVerdict;
-        @SerializedName("Priority")
+        @SerializedName("priority")
         @Expose
         private String priority;
-        @SerializedName("StatisticsProvider")
+        @SerializedName("statisticsProvider")
         @Expose
         private String statisticsProvider;
-        @SerializedName("RelatedSeriesIds")
+        @SerializedName("relatedSeriesIds")
         @Expose
         private String relatedSeriesIds;
-        @SerializedName("IsWomensCompetition")
+        @SerializedName("isWomensCompetition")
         @Expose
         private Boolean isWomensCompetition;
-        @SerializedName("Formats")
+        @SerializedName("formats")
         @Expose
         private List<Format> formats = null;
-        @SerializedName("LegacyCompetitionId")
+        @SerializedName("legacyCompetitionId")
         @Expose
         private Integer legacyCompetitionId;
-        @SerializedName("IsPublished")
+        @SerializedName("isPublished")
         @Expose
         private Boolean isPublished;
-        @SerializedName("SitecoreId")
+        @SerializedName("sitecoreId")
         @Expose
         private String sitecoreId;
 
@@ -744,157 +742,157 @@ public class DetailModal {
 
     public class Fixture {
 
-        @SerializedName("Competition")
+        @SerializedName("competition")
         @Expose
         private Competition competition;
-        @SerializedName("HomeTeam")
+        @SerializedName("homeTeam")
         @Expose
         private HomeTeam homeTeam;
-        @SerializedName("AwayTeam")
+        @SerializedName("awayTeam")
         @Expose
         private AwayTeam awayTeam;
-        @SerializedName("Venue")
+        @SerializedName("venue")
         @Expose
         private Venue venue;
-        @SerializedName("Innings")
+        @SerializedName("innings")
         @Expose
         private List<Inning> innings = null;
-        @SerializedName("Id")
+        @SerializedName("id")
         @Expose
         private Integer id;
-        @SerializedName("Name")
+        @SerializedName("name")
         @Expose
         private String name;
-        @SerializedName("StartDateTime")
+        @SerializedName("startDateTime")
         @Expose
         private String startDateTime;
-        @SerializedName("EndDateTime")
+        @SerializedName("endDateTime")
         @Expose
         private String endDateTime;
-        @SerializedName("GameTypeId")
+        @SerializedName("gameTypeId")
         @Expose
         private Integer gameTypeId;
-        @SerializedName("GameType")
+        @SerializedName("gameType")
         @Expose
         private String gameType;
-        @SerializedName("IsLive")
+        @SerializedName("isLive")
         @Expose
         private Boolean isLive;
-        @SerializedName("IsCompleted")
+        @SerializedName("isCompleted")
         @Expose
         private Boolean isCompleted;
-        @SerializedName("IsDuckworthLewis")
+        @SerializedName("isDuckworthLewis")
         @Expose
         private Boolean isDuckworthLewis;
-        @SerializedName("MatchDay")
+        @SerializedName("matchDay")
         @Expose
         private Integer matchDay;
-        @SerializedName("NumberOfDays")
+        @SerializedName("numberOfDays")
         @Expose
         private Integer numberOfDays;
-        @SerializedName("ResultText")
+        @SerializedName("resultText")
         @Expose
         private String resultText;
-        @SerializedName("ResultTypeId")
+        @SerializedName("resultTypeId")
         @Expose
         private String resultTypeId;
-        @SerializedName("ResultType")
+        @SerializedName("resultType")
         @Expose
         private String resultType;
-        @SerializedName("GameStatusId")
+        @SerializedName("gameStatusId")
         @Expose
         private String gameStatusId;
-        @SerializedName("GameStatus")
+        @SerializedName("gameStatus")
         @Expose
         private String gameStatus;
-        @SerializedName("TossResult")
+        @SerializedName("tossResult")
         @Expose
         private String tossResult;
-        @SerializedName("TossDecision")
+        @SerializedName("tossDecision")
         @Expose
         private String tossDecision;
-        @SerializedName("WinningMargin")
+        @SerializedName("winningMargin")
         @Expose
         private Integer winningMargin;
-        @SerializedName("WinTypeId")
+        @SerializedName("winTypeId")
         @Expose
         private String winTypeId;
-        @SerializedName("WinType")
+        @SerializedName("winType")
         @Expose
         private String winType;
-        @SerializedName("TicketUrl")
+        @SerializedName("ticketUrl")
         @Expose
         private String ticketUrl;
-        @SerializedName("Featured")
+        @SerializedName("featured")
         @Expose
         private Boolean featured;
-        @SerializedName("IsWomensMatch")
+        @SerializedName("isWomensMatch")
         @Expose
         private Boolean isWomensMatch;
-        @SerializedName("FanHashTag")
+        @SerializedName("fanHashTag")
         @Expose
         private String fanHashTag;
-        @SerializedName("TwitterHandle")
+        @SerializedName("twitterHandle")
         @Expose
         private String twitterHandle;
-        @SerializedName("SocialEventId")
+        @SerializedName("socialEventId")
         @Expose
         private String socialEventId;
-        @SerializedName("TuneIn")
+        @SerializedName("tuneIn")
         @Expose
         private Boolean tuneIn;
-        @SerializedName("MatchDayHomePageImageUrl")
+        @SerializedName("matchDayHomePageImageUrl")
         @Expose
         private String matchDayHomePageImageUrl;
-        @SerializedName("FanSocialEventId")
+        @SerializedName("fanSocialEventId")
         @Expose
         private String fanSocialEventId;
-        @SerializedName("IsVideoReplays")
+        @SerializedName("isVideoReplays")
         @Expose
         private Boolean isVideoReplays;
-        @SerializedName("GamedayStatus")
+        @SerializedName("gamedayStatus")
         @Expose
         private String gamedayStatus;
-        @SerializedName("IsEnableGameday")
+        @SerializedName("isEnableGameday")
         @Expose
         private Boolean isEnableGameday;
-        @SerializedName("MoreInfoUrl")
+        @SerializedName("moreInfoUrl")
         @Expose
         private String moreInfoUrl;
-        @SerializedName("OversRemaining")
+        @SerializedName("oversRemaining")
         @Expose
         private String oversRemaining;
-        @SerializedName("Order")
+        @SerializedName("order")
         @Expose
         private Integer order;
-        @SerializedName("CompetitionId")
+        @SerializedName("competitionId")
         @Expose
         private Integer competitionId;
-        @SerializedName("VenueId")
+        @SerializedName("venueId")
         @Expose
         private Integer venueId;
-        @SerializedName("HomeTeamId")
+        @SerializedName("homeTeamId")
         @Expose
         private Integer homeTeamId;
-        @SerializedName("AwayTeamId")
+        @SerializedName("awayTeamId")
         @Expose
         private Integer awayTeamId;
-        @SerializedName("Channels")
+        @SerializedName("channels")
         @Expose
         private List<Object> channels = null;
-        @SerializedName("Officials")
+        @SerializedName("officials")
         @Expose
         private List<Official> officials = null;
-        @SerializedName("LegacyFixtureId")
+        @SerializedName("legacyFixtureId")
         @Expose
         private Integer legacyFixtureId;
-        @SerializedName("IsInProgress")
+        @SerializedName("isInProgress")
         @Expose
         private Boolean isInProgress;
-        @SerializedName("TotalOvers")
+        @SerializedName("totalOvers")
         @Expose
         private String totalOvers;
-        @SerializedName("IsPublished")
+        @SerializedName("isPublished")
         @Expose
         private Boolean isPublished;
 
@@ -1309,13 +1307,13 @@ public class DetailModal {
     }
     public class Format {
 
-        @SerializedName("DisplayName")
+        @SerializedName("displayName")
         @Expose
         private String displayName;
-        @SerializedName("AssociatedMatchType")
+        @SerializedName("associatedMatchType")
         @Expose
         private String associatedMatchType;
-        @SerializedName("SeriesFormatName")
+        @SerializedName("seriesFormatName")
         @Expose
         private String seriesFormatName;
 
@@ -1346,43 +1344,43 @@ public class DetailModal {
     }
     public class HomeTeam {
 
-        @SerializedName("Id")
+        @SerializedName("id")
         @Expose
         private Integer id;
-        @SerializedName("Name")
+        @SerializedName("name")
         @Expose
         private String name;
-        @SerializedName("ShortName")
+        @SerializedName("shortName")
         @Expose
         private String shortName;
-        @SerializedName("TeamColor")
+        @SerializedName("teamColor")
         @Expose
         private String teamColor;
-        @SerializedName("LogoUrl")
+        @SerializedName("logoUrl")
         @Expose
         private String logoUrl;
-        @SerializedName("BackgroundImageUrl")
+        @SerializedName("backgroundImageUrl")
         @Expose
         private String backgroundImageUrl;
-        @SerializedName("TeambadgeImageUrl")
+        @SerializedName("teambadgeImageUrl")
         @Expose
         private String teambadgeImageUrl;
-        @SerializedName("IsHomeTeam")
+        @SerializedName("isHomeTeam")
         @Expose
         private Boolean isHomeTeam;
-        @SerializedName("IsTossWinner")
+        @SerializedName("isTossWinner")
         @Expose
         private Boolean isTossWinner;
-        @SerializedName("IsMatchWinner")
+        @SerializedName("isMatchWinner")
         @Expose
         private Boolean isMatchWinner;
-        @SerializedName("BattingBonus")
+        @SerializedName("battingBonus")
         @Expose
         private Integer battingBonus;
-        @SerializedName("BowlingBonus")
+        @SerializedName("bowlingBonus")
         @Expose
         private Integer bowlingBonus;
-        @SerializedName("IsActive")
+        @SerializedName("isActive")
         @Expose
         private Boolean isActive;
 
@@ -1493,85 +1491,85 @@ public class DetailModal {
     }
     public class Inning {
 
-        @SerializedName("Id")
+        @SerializedName("id")
         @Expose
         private Integer id;
-        @SerializedName("FixtureId")
+        @SerializedName("fixtureId")
         @Expose
         private Integer fixtureId;
-        @SerializedName("InningNumber")
+        @SerializedName("inningNumber")
         @Expose
         private Integer inningNumber;
-        @SerializedName("BattingTeamId")
+        @SerializedName("battingTeamId")
         @Expose
         private Integer battingTeamId;
-        @SerializedName("Batsmen")
+        @SerializedName("batsmen")
         @Expose
         private List<Batsman> batsmen = null;
-        @SerializedName("BowlingTeamId")
+        @SerializedName("bowlingTeamId")
         @Expose
         private Integer bowlingTeamId;
-        @SerializedName("Bowlers")
+        @SerializedName("bowlers")
         @Expose
         private List<Bowler> bowlers = null;
-        @SerializedName("Wickets")
+        @SerializedName("wickets")
         @Expose
         private List<Wicket> wickets = null;
-        @SerializedName("Overs")
+        @SerializedName("overs")
         @Expose
         private List<Object> overs = null;
-        @SerializedName("IsDeclared")
+        @SerializedName("isDeclared")
         @Expose
         private Boolean isDeclared;
-        @SerializedName("IsFollowOn")
+        @SerializedName("isFollowOn")
         @Expose
         private Boolean isFollowOn;
-        @SerializedName("IsForfeited")
+        @SerializedName("isForfeited")
         @Expose
         private Boolean isForfeited;
-        @SerializedName("OvernightRuns")
+        @SerializedName("overnightRuns")
         @Expose
         private Integer overnightRuns;
-        @SerializedName("OvernightWickets")
+        @SerializedName("overnightWickets")
         @Expose
         private Integer overnightWickets;
-        @SerializedName("ByesRuns")
+        @SerializedName("byesRuns")
         @Expose
         private Integer byesRuns;
-        @SerializedName("LegByesRuns")
+        @SerializedName("legByesRuns")
         @Expose
         private Integer legByesRuns;
-        @SerializedName("NoBalls")
+        @SerializedName("noBalls")
         @Expose
         private Integer noBalls;
-        @SerializedName("Penalties")
+        @SerializedName("penalties")
         @Expose
         private Integer penalties;
-        @SerializedName("TotalExtras")
+        @SerializedName("totalExtras")
         @Expose
         private Integer totalExtras;
-        @SerializedName("WideBalls")
+        @SerializedName("wideBalls")
         @Expose
         private Integer wideBalls;
-        @SerializedName("OversBowled")
+        @SerializedName("oversBowled")
         @Expose
         private String oversBowled;
-        @SerializedName("RunsScored")
+        @SerializedName("runsScored")
         @Expose
         private Integer runsScored;
-        @SerializedName("NumberOfWicketsFallen")
+        @SerializedName("numberOfWicketsFallen")
         @Expose
         private Integer numberOfWicketsFallen;
-        @SerializedName("Day")
+        @SerializedName("day")
         @Expose
         private Integer day;
-        @SerializedName("DuckworthLewisOvers")
+        @SerializedName("duckworthLewisOvers")
         @Expose
         private String duckworthLewisOvers;
-        @SerializedName("Partnership")
+        @SerializedName("partnership")
         @Expose
         private Partnership partnership;
-        @SerializedName("RequiredRunRate")
+        @SerializedName("requiredRunRate")
         @Expose
         private Double requiredRunRate;
 
@@ -1794,19 +1792,19 @@ public class DetailModal {
     }
     public class Official {
 
-        @SerializedName("FirstName")
+        @SerializedName("firstName")
         @Expose
         private String firstName;
-        @SerializedName("LastName")
+        @SerializedName("lastName")
         @Expose
         private String lastName;
-        @SerializedName("Initials")
+        @SerializedName("initials")
         @Expose
         private String initials;
-        @SerializedName("UmpireType")
+        @SerializedName("umpireType")
         @Expose
         private String umpireType;
-        @SerializedName("HasRetired")
+        @SerializedName("hasRetired")
         @Expose
         private Boolean hasRetired;
 
@@ -1853,40 +1851,40 @@ public class DetailModal {
     }
     public class Partnership {
 
-        @SerializedName("FirstPlayerId")
+        @SerializedName("firstPlayerId")
         @Expose
         private Integer firstPlayerId;
-        @SerializedName("FirstPlayerBallsFaced")
+        @SerializedName("firstPlayerBallsFaced")
         @Expose
         private Integer firstPlayerBallsFaced;
-        @SerializedName("FirstPlayerRunsScored")
+        @SerializedName("firstPlayerRunsScored")
         @Expose
         private Integer firstPlayerRunsScored;
-        @SerializedName("FirstPlayerIsOnStrike")
+        @SerializedName("firstPlayerIsOnStrike")
         @Expose
         private Boolean firstPlayerIsOnStrike;
-        @SerializedName("SecondPlayerId")
+        @SerializedName("secondPlayerId")
         @Expose
         private Integer secondPlayerId;
-        @SerializedName("SecondPlayerBallsFaced")
+        @SerializedName("secondPlayerBallsFaced")
         @Expose
         private Integer secondPlayerBallsFaced;
-        @SerializedName("SecondPlayerRunsScored")
+        @SerializedName("secondPlayerRunsScored")
         @Expose
         private Integer secondPlayerRunsScored;
-        @SerializedName("SecondPlayerIsOnStrike")
+        @SerializedName("secondPlayerIsOnStrike")
         @Expose
         private Boolean secondPlayerIsOnStrike;
-        @SerializedName("TotalRunsScored")
+        @SerializedName("totalRunsScored")
         @Expose
         private Integer totalRunsScored;
-        @SerializedName("IsCurrent")
+        @SerializedName("isCurrent")
         @Expose
         private Boolean isCurrent;
-        @SerializedName("Runrate")
+        @SerializedName("runrate")
         @Expose
-        private Integer runrate;
-        @SerializedName("TotalBallsFaced")
+        private double runrate;
+        @SerializedName("totalBallsFaced")
         @Expose
         private Integer totalBallsFaced;
 
@@ -1970,7 +1968,7 @@ public class DetailModal {
             this.isCurrent = isCurrent;
         }
 
-        public Integer getRunrate() {
+        public double getRunrate() {
             return runrate;
         }
 
@@ -1987,241 +1985,99 @@ public class DetailModal {
         }
 
     }
-    public class Venue {
-
-        @SerializedName("Id")
-        @Expose
-        private Integer id;
-        @SerializedName("Name")
-        @Expose
-        private String name;
-        @SerializedName("City")
-        @Expose
-        private String city;
-        @SerializedName("ImageUrl")
-        @Expose
-        private String imageUrl;
-        @SerializedName("Latitude")
-        @Expose
-        private String latitude;
-        @SerializedName("Longitude")
-        @Expose
-        private String longitude;
-        @SerializedName("PhoneNumber")
-        @Expose
-        private String phoneNumber;
-
-        public Integer getId() {
-            return id;
-        }
-
-        public void setId(Integer id) {
-            this.id = id;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public String getCity() {
-            return city;
-        }
-
-        public void setCity(String city) {
-            this.city = city;
-        }
-
-        public String getImageUrl() {
-            return imageUrl;
-        }
-
-        public void setImageUrl(String imageUrl) {
-            this.imageUrl = imageUrl;
-        }
-
-        public String getLatitude() {
-            return latitude;
-        }
-
-        public void setLatitude(String latitude) {
-            this.latitude = latitude;
-        }
-
-        public String getLongitude() {
-            return longitude;
-        }
-
-        public void setLongitude(String longitude) {
-            this.longitude = longitude;
-        }
-
-        public String getPhoneNumber() {
-            return phoneNumber;
-        }
-
-        public void setPhoneNumber(String phoneNumber) {
-            this.phoneNumber = phoneNumber;
-        }
-
-    }
-    public class Wicket {
-
-        @SerializedName("PlayerId")
-        @Expose
-        private Integer playerId;
-        @SerializedName("Order")
-        @Expose
-        private Integer order;
-        @SerializedName("OverBallDisplay")
-        @Expose
-        private String overBallDisplay;
-        @SerializedName("Runs")
-        @Expose
-        private Integer runs;
-        @SerializedName("InningsBallId")
-        @Expose
-        private Integer inningsBallId;
-
-        public Integer getPlayerId() {
-            return playerId;
-        }
-
-        public void setPlayerId(Integer playerId) {
-            this.playerId = playerId;
-        }
-
-        public Integer getOrder() {
-            return order;
-        }
-
-        public void setOrder(Integer order) {
-            this.order = order;
-        }
-
-        public String getOverBallDisplay() {
-            return overBallDisplay;
-        }
-
-        public void setOverBallDisplay(String overBallDisplay) {
-            this.overBallDisplay = overBallDisplay;
-        }
-
-        public Integer getRuns() {
-            return runs;
-        }
-
-        public void setRuns(Integer runs) {
-            this.runs = runs;
-        }
-
-        public Integer getInningsBallId() {
-            return inningsBallId;
-        }
-
-        public void setInningsBallId(Integer inningsBallId) {
-            this.inningsBallId = inningsBallId;
-        }
-
-    }
-
-
     public class Player {
 
-        @SerializedName("Id")
+        @SerializedName("id")
         @Expose
         private Integer id;
-        @SerializedName("TeamId")
+        @SerializedName("teamId")
         @Expose
         private Integer teamId;
-        @SerializedName("IsCaptain")
+        @SerializedName("isCaptain")
         @Expose
         private Boolean isCaptain;
-        @SerializedName("IsWicketKeeper")
+        @SerializedName("isWicketKeeper")
         @Expose
         private Boolean isWicketKeeper;
-        @SerializedName("IsTwelthMan")
+        @SerializedName("isTwelthMan")
         @Expose
         private Boolean isTwelthMan;
-        @SerializedName("IsManOfTheMatch")
+        @SerializedName("isManOfTheMatch")
         @Expose
         private Boolean isManOfTheMatch;
-        @SerializedName("IsManOfTheSeries")
+        @SerializedName("isManOfTheSeries")
         @Expose
         private Boolean isManOfTheSeries;
-        @SerializedName("ManOfTheMatchOrder")
+        @SerializedName("manOfTheMatchOrder")
         @Expose
         private Integer manOfTheMatchOrder;
-        @SerializedName("ManOfTheSeriesOrder")
+        @SerializedName("manOfTheSeriesOrder")
         @Expose
         private Integer manOfTheSeriesOrder;
-        @SerializedName("Order")
+        @SerializedName("order")
         @Expose
         private Integer order;
-        @SerializedName("FirstName")
+        @SerializedName("firstName")
         @Expose
         private String firstName;
-        @SerializedName("LastName")
+        @SerializedName("lastName")
         @Expose
         private String lastName;
-        @SerializedName("MiddleName")
+        @SerializedName("middleName")
         @Expose
         private String middleName;
-        @SerializedName("Initials")
+        @SerializedName("initials")
         @Expose
         private String initials;
-        @SerializedName("DisplayName")
+        @SerializedName("displayName")
         @Expose
         private String displayName;
-        @SerializedName("Type")
+        @SerializedName("type")
         @Expose
         private String type;
-        @SerializedName("BattingHandId")
+        @SerializedName("battingHandId")
         @Expose
         private String battingHandId;
-        @SerializedName("BattingHand")
+        @SerializedName("battingHand")
         @Expose
         private String battingHand;
-        @SerializedName("DOB")
+        @SerializedName("dob")
         @Expose
         private String dob;
-        @SerializedName("BirthPlace")
+        @SerializedName("birthPlace")
         @Expose
         private String birthPlace;
-        @SerializedName("ImageUrl")
+        @SerializedName("imageUrl")
         @Expose
         private String imageUrl;
-        @SerializedName("Height")
+        @SerializedName("height")
         @Expose
         private String height;
-        @SerializedName("DidyouKnow")
+        @SerializedName("didyouKnow")
         @Expose
         private String didyouKnow;
-        @SerializedName("Bio")
+        @SerializedName("bio")
         @Expose
         private String bio;
-        @SerializedName("PlayerDetails")
+        @SerializedName("playerDetails")
         @Expose
         private List<PlayerDetail> playerDetails = null;
-        @SerializedName("IsActive")
+        @SerializedName("isActive")
         @Expose
         private Boolean isActive;
-        @SerializedName("SitecoreShortGUID")
+        @SerializedName("sitecoreShortGUID")
         @Expose
         private String sitecoreShortGUID;
-        @SerializedName("BowlingHandId")
+        @SerializedName("bowlingHandId")
         @Expose
         private String bowlingHandId;
-        @SerializedName("BowlingTypeId")
+        @SerializedName("bowlingTypeId")
         @Expose
         private String bowlingTypeId;
-        @SerializedName("BowlingHand")
+        @SerializedName("bowlingHand")
         @Expose
         private String bowlingHand;
-        @SerializedName("BowlingType")
+        @SerializedName("bowlingType")
         @Expose
         private String bowlingType;
 
@@ -2476,19 +2332,19 @@ public class DetailModal {
     }
     public class PlayerDetail {
 
-        @SerializedName("PlayerId")
+        @SerializedName("playerId")
         @Expose
         private Integer playerId;
-        @SerializedName("GameTypeId")
+        @SerializedName("gameTypeId")
         @Expose
         private String gameTypeId;
-        @SerializedName("GameType")
+        @SerializedName("gameType")
         @Expose
         private String gameType;
-        @SerializedName("DebutDate")
+        @SerializedName("debutDate")
         @Expose
         private String debutDate;
-        @SerializedName("ImageUrl")
+        @SerializedName("imageUrl")
         @Expose
         private String imageUrl;
 
@@ -2533,5 +2389,144 @@ public class DetailModal {
         }
 
     }
+    public class Venue {
 
+        @SerializedName("id")
+        @Expose
+        private Integer id;
+        @SerializedName("name")
+        @Expose
+        private String name;
+        @SerializedName("city")
+        @Expose
+        private String city;
+        @SerializedName("imageUrl")
+        @Expose
+        private String imageUrl;
+        @SerializedName("latitude")
+        @Expose
+        private String latitude;
+        @SerializedName("longitude")
+        @Expose
+        private String longitude;
+        @SerializedName("phoneNumber")
+        @Expose
+        private String phoneNumber;
+
+        public Integer getId() {
+            return id;
+        }
+
+        public void setId(Integer id) {
+            this.id = id;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getCity() {
+            return city;
+        }
+
+        public void setCity(String city) {
+            this.city = city;
+        }
+
+        public String getImageUrl() {
+            return imageUrl;
+        }
+
+        public void setImageUrl(String imageUrl) {
+            this.imageUrl = imageUrl;
+        }
+
+        public String getLatitude() {
+            return latitude;
+        }
+
+        public void setLatitude(String latitude) {
+            this.latitude = latitude;
+        }
+
+        public String getLongitude() {
+            return longitude;
+        }
+
+        public void setLongitude(String longitude) {
+            this.longitude = longitude;
+        }
+
+        public String getPhoneNumber() {
+            return phoneNumber;
+        }
+
+        public void setPhoneNumber(String phoneNumber) {
+            this.phoneNumber = phoneNumber;
+        }
+
+    }
+    public class Wicket {
+
+        @SerializedName("playerId")
+        @Expose
+        private Integer playerId;
+        @SerializedName("order")
+        @Expose
+        private Integer order;
+        @SerializedName("overBallDisplay")
+        @Expose
+        private String overBallDisplay;
+        @SerializedName("runs")
+        @Expose
+        private Integer runs;
+        @SerializedName("inningsBallId")
+        @Expose
+        private Integer inningsBallId;
+
+        public Integer getPlayerId() {
+            return playerId;
+        }
+
+        public void setPlayerId(Integer playerId) {
+            this.playerId = playerId;
+        }
+
+        public Integer getOrder() {
+            return order;
+        }
+
+        public void setOrder(Integer order) {
+            this.order = order;
+        }
+
+        public String getOverBallDisplay() {
+            return overBallDisplay;
+        }
+
+        public void setOverBallDisplay(String overBallDisplay) {
+            this.overBallDisplay = overBallDisplay;
+        }
+
+        public Integer getRuns() {
+            return runs;
+        }
+
+        public void setRuns(Integer runs) {
+            this.runs = runs;
+        }
+
+        public Integer getInningsBallId() {
+            return inningsBallId;
+        }
+
+        public void setInningsBallId(Integer inningsBallId) {
+            this.inningsBallId = inningsBallId;
+        }
+
+    }
 }

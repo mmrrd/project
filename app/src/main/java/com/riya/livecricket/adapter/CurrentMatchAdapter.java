@@ -54,8 +54,8 @@ public class CurrentMatchAdapter extends RecyclerView.Adapter<CurrentMatchAdapte
                 .into(holder.img2);
 
 
-//        holder.score_1.setText(allMatches.get(position).getInnings().get(0).getRunsScored() + "/" + allMatches.get(position).getInnings().get(0).getNumberOfWicketsFallen());
-//        holder.score_2.setText(allMatches.get(position).getInnings().get(1).getRunsScored() + "/" + allMatches.get(position).getInnings().get(0).getNumberOfWicketsFallen());
+        holder.score_1.setText(allMatches.get(position).getInnings().get(0).getRunsScored() + "/" + allMatches.get(position).getInnings().get(0).getNumberOfWicketsFallen());
+        holder.score_2.setText(allMatches.get(position).getInnings().get(1).getRunsScored() + "/" + allMatches.get(position).getInnings().get(1).getNumberOfWicketsFallen());
 
         holder.liveMatch.setOnClickListener(new View.OnClickListener() {
             @Override
