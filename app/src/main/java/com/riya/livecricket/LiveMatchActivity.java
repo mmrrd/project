@@ -55,18 +55,35 @@ public class LiveMatchActivity extends AppCompatActivity {
         back=findViewById(R.id.back);
         next=findViewById(R.id.next);
 
+        findViewById(R.id.backBtn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (count==1)
                 {
+                    inning.setText("1nd "+details.getFixture().getHomeTeam().getShortName()+" "+details.getFixture().getInnings().get(0).getRunsScored()+"/"+details.getFixture().getInnings().get(0).getNumberOfWicketsFallen());
+                    ViewPager viewPager=findViewById(R.id.battingOrder);
+                    viewPager.setAdapter(new BattingOrderAdapter(LiveMatchActivity.this,details.getFixture().getInnings().get(0).getBatsmen(),details.getPlayers()));
+                    ViewPager viewPager1=findViewById(R.id.bowling);
+                    viewPager1.setAdapter(new BowlingOrderAdapter(LiveMatchActivity.this,details.getFixture().getInnings().get(0).getBowlers(),details.getPlayers()));
+
+                    count=0;
+                }
+                else
+                {
                     inning.setText("2nd "+details.getFixture().getAwayTeam().getShortName()+" "+details.getFixture().getInnings().get(1).getRunsScored()+"/"+details.getFixture().getInnings().get(1).getNumberOfWicketsFallen());
                     ViewPager viewPager=findViewById(R.id.battingOrder);
                     viewPager.setAdapter(new BattingOrderAdapter(LiveMatchActivity.this,details.getFixture().getInnings().get(1).getBatsmen(),details.getPlayers()));
                     ViewPager viewPager1=findViewById(R.id.bowling);
                     viewPager1.setAdapter(new BowlingOrderAdapter(LiveMatchActivity.this,details.getFixture().getInnings().get(1).getBowlers(),details.getPlayers()));
-                    count=0;
+
+                    count=1;
                 }
 
             }
@@ -76,12 +93,23 @@ public class LiveMatchActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (count==0)
                 {
+                    inning.setText("2nd "+details.getFixture().getAwayTeam().getShortName()+" "+details.getFixture().getInnings().get(1).getRunsScored()+"/"+details.getFixture().getInnings().get(1).getNumberOfWicketsFallen());
+                    ViewPager viewPager=findViewById(R.id.battingOrder);
+                    viewPager.setAdapter(new BattingOrderAdapter(LiveMatchActivity.this,details.getFixture().getInnings().get(1).getBatsmen(),details.getPlayers()));
+                    ViewPager viewPager1=findViewById(R.id.bowling);
+                    viewPager1.setAdapter(new BowlingOrderAdapter(LiveMatchActivity.this,details.getFixture().getInnings().get(1).getBowlers(),details.getPlayers()));
+
+                     count=1;
+                }
+                else
+                {
                     inning.setText("1nd "+details.getFixture().getHomeTeam().getShortName()+" "+details.getFixture().getInnings().get(0).getRunsScored()+"/"+details.getFixture().getInnings().get(0).getNumberOfWicketsFallen());
                     ViewPager viewPager=findViewById(R.id.battingOrder);
                     viewPager.setAdapter(new BattingOrderAdapter(LiveMatchActivity.this,details.getFixture().getInnings().get(0).getBatsmen(),details.getPlayers()));
                     ViewPager viewPager1=findViewById(R.id.bowling);
                     viewPager1.setAdapter(new BowlingOrderAdapter(LiveMatchActivity.this,details.getFixture().getInnings().get(0).getBowlers(),details.getPlayers()));
-                    count=1;
+
+                    count=0;
                 }
             }
         });
@@ -137,5 +165,10 @@ public class LiveMatchActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
     }
 }

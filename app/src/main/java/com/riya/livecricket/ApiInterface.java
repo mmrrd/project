@@ -22,7 +22,7 @@ public interface ApiInterface {
 
 
     @GET("prediction.php")
-    Call<Predictions> getPrediction();
+    Call<Void> getPrediction();
 
     @GET("pointslist.php")
     Call<PointTable> getPoniTabele();

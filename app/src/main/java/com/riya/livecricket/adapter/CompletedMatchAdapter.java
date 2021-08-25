@@ -3,6 +3,8 @@ package com.riya.livecricket.adapter;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.icu.text.SimpleDateFormat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,8 +20,11 @@ import com.riya.livecricket.CompletedMatchActivity;
 import com.riya.livecricket.R;
 import com.squareup.picasso.Picasso;
 
+import java.text.ParseException;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
+import java.util.StringTokenizer;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -27,21 +32,16 @@ public class CompletedMatchAdapter extends PagerAdapter {
 
 
 
-    // Context object
     Context context;
-
-    // Array of images
     List<AllMatch.CompletedFixture> allMatches;
-
-    // Layout Inflater
-    LayoutInflater mLayoutInflater;
+    //    LayoutInflater mLayoutInflater;
 
 
     // Viewpager Constructor
     public CompletedMatchAdapter(Context context, List<AllMatch.CompletedFixture> allMatches) {
         this.context = context;
         this.allMatches = allMatches;
-        mLayoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//        mLayoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     @Override
@@ -60,7 +60,7 @@ public class CompletedMatchAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, final int position) {
         // inflating the item.xml
-        View itemView = mLayoutInflater.inflate(R.layout.layout_completed_match, container, false);
+        View itemView = LayoutInflater.from(context).inflate(R.layout.layout_completed_match, container, false);
 
         TextView match_1 = itemView.findViewById(R.id.match_1);
         TextView match_2 = itemView.findViewById(R.id.match_2);
@@ -115,6 +115,38 @@ public class CompletedMatchAdapter extends PagerAdapter {
                         .putExtra("awayTeamId", allMatches.get(position).getAwayTeamId()));
             }
         });
+
+        String s=allMatches.get(position).getStartDateTime();
+        String s1=s.replace("T"," ");
+        String s2 = s1.replace("Z","");
+
+        Log.d("TAG", "instantiateItem:== "+s2);
+
+        StringTokenizer tk = new StringTokenizer(s2);
+        String date1 = tk.nextToken();
+        String time1 = tk.nextToken();
+
+//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
+//        SimpleDateFormat sdfs = new SimpleDateFormat("EEE, d MMM, yyyy");
+//        Date dt;
+//        try {
+//            dt = sdf.parse(date1);
+//            day.setText(sdfs.format(dt));
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
+
+        SimpleDateFormat sdf1 = new SimpleDateFormat("hh:mm:ss");
+        SimpleDateFormat sdfs1 = new SimpleDateFormat("h:mm a");
+        Date dt1;
+        try {
+            dt1 = sdf1.parse(time1);
+            time.setText(sdfs1.format(dt1));
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
 
         // Adding the View
         Objects.requireNonNull(container).addView(itemView);

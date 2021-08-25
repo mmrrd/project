@@ -48,8 +48,7 @@
         android:layout_height="wrap_content"
         android:background="@color/darkPink"
         app:tabIndicatorColor="@color/white"
-        app:tabTextColor="@color/white"
-        android:minHeight="?attr/actionBarSize"/>
+        app:tabTextColor="@color/white"/>
 
     <!-- View pager to swipe views -->
     <androidx.viewpager.widget.ViewPager

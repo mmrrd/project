@@ -7,7 +7,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.riya.livecricket.adapter.BattingOrderAdapter;
 import com.riya.livecricket.adapter.BowlingOrderAdapter;
@@ -27,6 +30,8 @@ public class CompletedMatchActivity extends AppCompatActivity {
     TextView name1,name2,score1,score2,tossResult,venue,inning,player,playerName;
     ImageView back,next;
     int count=0;
+    ScrollView scrollView;
+    RelativeLayout progressBar;
 
     DetailModal details;
 
@@ -42,6 +47,9 @@ public class CompletedMatchActivity extends AppCompatActivity {
         Log.d("TAG", "onCreate: " + awayTeamId);
         Log.d("TAG", "onCreate: " + matchId);
 
+        scrollView = findViewById(R.id.scrollView);
+        progressBar = findViewById(R.id.progressBar);
+
         teamImg1 = findViewById(R.id.teamImg1);
         teamImg2 = findViewById(R.id.teamImg2);
         name1 = findViewById(R.id.name1);
@@ -55,8 +63,18 @@ public class CompletedMatchActivity extends AppCompatActivity {
         next = findViewById(R.id.next);
         playerName = findViewById(R.id.playerNmae);
         player = findViewById(R.id.player);
-//
-//
+
+        scrollView.setVisibility(View.GONE);
+        progressBar.setVisibility(View.VISIBLE);
+
+
+        findViewById(R.id.backBtn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,6 +111,8 @@ public class CompletedMatchActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<DetailModal> call, Response<DetailModal> response) {
 
+                scrollView.setVisibility(View.VISIBLE);
+                progressBar.setVisibility(View.GONE);
 
                 details = response.body();
 
@@ -151,7 +171,16 @@ public class CompletedMatchActivity extends AppCompatActivity {
             public void onFailure(Call<DetailModal> call, Throwable t) {
                 // Log error here since request failed
                 Log.e("TAG", t.toString());
+                scrollView.setVisibility(View.GONE);
+                progressBar.setVisibility(View.VISIBLE);
+
+                Toast.makeText(CompletedMatchActivity.this, "Please Check Your Internet Connecation...", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
     }
 }

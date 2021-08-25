@@ -53,9 +53,42 @@ public class CurrentMatchAdapter extends RecyclerView.Adapter<CurrentMatchAdapte
                 .error(R.mipmap.ic_launcher)
                 .into(holder.img2);
 
+        Log.d("TAG", "onBindViewHolder: "+allMatches.get(position).getInnings().size());
 
-        holder.score_1.setText(allMatches.get(position).getInnings().get(0).getRunsScored() + "/" + allMatches.get(position).getInnings().get(0).getNumberOfWicketsFallen());
-        holder.score_2.setText(allMatches.get(position).getInnings().get(1).getRunsScored() + "/" + allMatches.get(position).getInnings().get(1).getNumberOfWicketsFallen());
+        if (allMatches.get(position).getInnings().size()==1)
+        {
+            holder.score_1.setText(allMatches.get(position).getInnings().get(0).getRunsScored() + "/" + allMatches.get(position).getInnings().get(0).getNumberOfWicketsFallen());
+            holder.score_2.setText("0/0");
+            holder.over_1.setText("("+allMatches.get(position).getInnings().get(0).getOversBowled()+")");
+            holder.over_2.setText("");
+        }
+        else  if (allMatches.get(position).getInnings().size()==2)
+        {
+            holder.score_1.setText(allMatches.get(position).getInnings().get(0).getRunsScored() + "/" + allMatches.get(position).getInnings().get(0).getNumberOfWicketsFallen());
+            holder.score_2.setText(allMatches.get(position).getInnings().get(1).getRunsScored() + "/" + allMatches.get(position).getInnings().get(1).getNumberOfWicketsFallen());
+            holder.over_1.setText("("+allMatches.get(position).getInnings().get(0).getOversBowled()+")");
+            holder.over_2.setText("("+allMatches.get(position).getInnings().get(1).getOversBowled()+")");
+        }
+        else if (allMatches.get(position).getInnings().size()>2)
+        {
+            holder.score_1.setText(allMatches.get(position).getInnings().get(allMatches.get(position).getInnings().size()-2).getRunsScored() + "/" + allMatches.get(position).getInnings().get(allMatches.get(position).getInnings().size()-2).getNumberOfWicketsFallen());
+            holder.score_2.setText(allMatches.get(position).getInnings().get(allMatches.get(position).getInnings().size()-1).getRunsScored() + "/" + allMatches.get(position).getInnings().get(allMatches.get(position).getInnings().size()-1).getNumberOfWicketsFallen());
+            holder.over_1.setText("("+allMatches.get(position).getInnings().get(allMatches.get(position).getInnings().size()-2).getOversBowled()+")");
+            holder.over_2.setText("("+allMatches.get(position).getInnings().get(allMatches.get(position).getInnings().size()-1).getOversBowled()+")");
+        }
+
+//        if (allMatches.get(position).getInnings().get(0).getIsDeclared().equals(true))
+//        {
+//            holder.score_1.setText(allMatches.get(position).getInnings().get(0).getRunsScored() + "/" + allMatches.get(position).getInnings().get(0).getNumberOfWicketsFallen());
+//            holder.score_2.setText("-/-");
+//
+//        }
+//        else {
+//            holder.score_1.setText(allMatches.get(position).getInnings().get(0).getRunsScored() + "/" + allMatches.get(position).getInnings().get(0).getNumberOfWicketsFallen());
+//            holder.score_2.setText(allMatches.get(position).getInnings().get(0).getRunsScored() + "/" + allMatches.get(position).getInnings().get(0).getNumberOfWicketsFallen());
+//
+//        }
+
 
         holder.liveMatch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,7 +112,7 @@ public class CurrentMatchAdapter extends RecyclerView.Adapter<CurrentMatchAdapte
 
     public class MyView extends RecyclerView.ViewHolder {
 
-        TextView match_1, match_2, score_1, score_2;
+        TextView match_1, match_2, score_1, score_2,over_1,over_2;
         CircleImageView img1, img2;
         LinearLayout liveMatch;
 
@@ -92,6 +125,8 @@ public class CurrentMatchAdapter extends RecyclerView.Adapter<CurrentMatchAdapte
             img2 = itemView.findViewById(R.id.img2);
             score_1 = itemView.findViewById(R.id.score_1);
             score_2 = itemView.findViewById(R.id.score_2);
+            over_1 = itemView.findViewById(R.id.over_1);
+            over_2 = itemView.findViewById(R.id.over_2);
             liveMatch = itemView.findViewById(R.id.liveMatch);
         }
     }
