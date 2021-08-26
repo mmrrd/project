@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.riya.livecricket.LiveMatchActivity;
@@ -57,6 +58,14 @@ public class CurrentMatchAdapter extends RecyclerView.Adapter<CurrentMatchAdapte
 
         if (allMatches.get(position).getInnings().size()==1)
         {
+            holder.li_1.setBackgroundResource(R.color.blue);
+            holder.li_2.setBackgroundResource(R.color.white);
+            holder.match_1.setTextColor(ContextCompat.getColor(context,R.color.white));
+            holder.match_2.setTextColor(ContextCompat.getColor(context,R.color.black));
+            holder.score_1.setTextColor(ContextCompat.getColor(context,R.color.white));
+            holder.score_2.setTextColor(ContextCompat.getColor(context,R.color.black));
+            holder.over_1.setTextColor(ContextCompat.getColor(context,R.color.white));
+            holder.over_2.setTextColor(ContextCompat.getColor(context,R.color.black));
             holder.score_1.setText(allMatches.get(position).getInnings().get(0).getRunsScored() + "/" + allMatches.get(position).getInnings().get(0).getNumberOfWicketsFallen());
             holder.score_2.setText("0/0");
             holder.over_1.setText("("+allMatches.get(position).getInnings().get(0).getOversBowled()+")");
@@ -64,30 +73,34 @@ public class CurrentMatchAdapter extends RecyclerView.Adapter<CurrentMatchAdapte
         }
         else  if (allMatches.get(position).getInnings().size()==2)
         {
+            holder.match_1.setTextColor(ContextCompat.getColor(context,R.color.black));
+            holder.match_2.setTextColor(ContextCompat.getColor(context,R.color.white));
+            holder.score_1.setTextColor(ContextCompat.getColor(context,R.color.black));
+            holder.score_2.setTextColor(ContextCompat.getColor(context,R.color.white));
+            holder.over_1.setTextColor(ContextCompat.getColor(context,R.color.black));
+            holder.over_2.setTextColor(ContextCompat.getColor(context,R.color.white));
+            holder.li_1.setBackgroundResource(R.color.white);
+            holder.li_2.setBackgroundResource(R.color.blue);
             holder.score_1.setText(allMatches.get(position).getInnings().get(0).getRunsScored() + "/" + allMatches.get(position).getInnings().get(0).getNumberOfWicketsFallen());
             holder.score_2.setText(allMatches.get(position).getInnings().get(1).getRunsScored() + "/" + allMatches.get(position).getInnings().get(1).getNumberOfWicketsFallen());
             holder.over_1.setText("("+allMatches.get(position).getInnings().get(0).getOversBowled()+")");
             holder.over_2.setText("("+allMatches.get(position).getInnings().get(1).getOversBowled()+")");
         }
-        else if (allMatches.get(position).getInnings().size()>2)
+        else if (allMatches.get(position).getInnings().size()>=3)
         {
+            holder.match_1.setTextColor(ContextCompat.getColor(context,R.color.white));
+            holder.match_2.setTextColor(ContextCompat.getColor(context,R.color.black));
+            holder.score_1.setTextColor(ContextCompat.getColor(context,R.color.white));
+            holder.score_2.setTextColor(ContextCompat.getColor(context,R.color.black));
+            holder.over_1.setTextColor(ContextCompat.getColor(context,R.color.white));
+            holder.over_2.setTextColor(ContextCompat.getColor(context,R.color.black));
+            holder.li_1.setBackgroundResource(R.color.white);
+            holder.li_2.setBackgroundResource(R.color.blue);
             holder.score_1.setText(allMatches.get(position).getInnings().get(allMatches.get(position).getInnings().size()-2).getRunsScored() + "/" + allMatches.get(position).getInnings().get(allMatches.get(position).getInnings().size()-2).getNumberOfWicketsFallen());
             holder.score_2.setText(allMatches.get(position).getInnings().get(allMatches.get(position).getInnings().size()-1).getRunsScored() + "/" + allMatches.get(position).getInnings().get(allMatches.get(position).getInnings().size()-1).getNumberOfWicketsFallen());
             holder.over_1.setText("("+allMatches.get(position).getInnings().get(allMatches.get(position).getInnings().size()-2).getOversBowled()+")");
             holder.over_2.setText("("+allMatches.get(position).getInnings().get(allMatches.get(position).getInnings().size()-1).getOversBowled()+")");
         }
-
-//        if (allMatches.get(position).getInnings().get(0).getIsDeclared().equals(true))
-//        {
-//            holder.score_1.setText(allMatches.get(position).getInnings().get(0).getRunsScored() + "/" + allMatches.get(position).getInnings().get(0).getNumberOfWicketsFallen());
-//            holder.score_2.setText("-/-");
-//
-//        }
-//        else {
-//            holder.score_1.setText(allMatches.get(position).getInnings().get(0).getRunsScored() + "/" + allMatches.get(position).getInnings().get(0).getNumberOfWicketsFallen());
-//            holder.score_2.setText(allMatches.get(position).getInnings().get(0).getRunsScored() + "/" + allMatches.get(position).getInnings().get(0).getNumberOfWicketsFallen());
-//
-//        }
 
 
         holder.liveMatch.setOnClickListener(new View.OnClickListener() {
@@ -115,6 +128,7 @@ public class CurrentMatchAdapter extends RecyclerView.Adapter<CurrentMatchAdapte
         TextView match_1, match_2, score_1, score_2,over_1,over_2;
         CircleImageView img1, img2;
         LinearLayout liveMatch;
+        LinearLayout li_2,li_1;
 
         public MyView(@NonNull View itemView) {
             super(itemView);
@@ -127,6 +141,8 @@ public class CurrentMatchAdapter extends RecyclerView.Adapter<CurrentMatchAdapte
             score_2 = itemView.findViewById(R.id.score_2);
             over_1 = itemView.findViewById(R.id.over_1);
             over_2 = itemView.findViewById(R.id.over_2);
+            li_2 = itemView.findViewById(R.id.li_2);
+            li_1 = itemView.findViewById(R.id.li_1);
             liveMatch = itemView.findViewById(R.id.liveMatch);
         }
     }

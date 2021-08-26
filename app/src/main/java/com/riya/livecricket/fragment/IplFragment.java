@@ -37,6 +37,7 @@ import com.squareup.picasso.Picasso;
 import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.StringTokenizer;
@@ -50,14 +51,14 @@ import retrofit2.Response;
 
 public class IplFragment extends Fragment {
     RecyclerView recycleView;
-    List<String> stringList=new ArrayList<>();
+    List<Integer> stringList=new ArrayList<>();
     int cunt=0;
     PointTable response;
     TextView inning;
+    ArrayList<PointTable.Point> pointArrayList=new ArrayList<>();
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_ipl, container, false);
 
@@ -65,14 +66,18 @@ public class IplFragment extends Fragment {
         recycleView=view.findViewById(R.id.recycleView);
         recycleView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        stringList.add("#5375E5");
-        stringList.add("#F1BD30");
-        stringList.add("#BA18E5");
-        stringList.add("#468FDD");
-        stringList.add("#E83A5E");
-        stringList.add("#E5751E");
-        stringList.add("#89FF17");
-        stringList.add("#892F17");
+        stringList.add(R.drawable.gradient_1);
+        stringList.add(R.drawable.gradient_2);
+        stringList.add(R.drawable.gradient_3);
+        stringList.add(R.drawable.gradient_4);
+        stringList.add(R.drawable.gradient_5);
+        stringList.add(R.drawable.gradient_6);
+        stringList.add(R.drawable.gradient_7);
+        stringList.add(R.drawable.gradient_8);
+
+
+
+
 
         view.findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,7 +101,7 @@ public class IplFragment extends Fragment {
                 else if (cunt==2)
                 {
                     inning.setText("Points Table");
-                    pointAdpter adpter=new pointAdpter(getActivity(),response.getPointList());
+                    pointAdpter adpter=new pointAdpter(getActivity(),pointArrayList);
                     recycleView.setAdapter(adpter);
                     adpter.notifyDataSetChanged();
                     cunt=1;
@@ -125,7 +130,7 @@ public class IplFragment extends Fragment {
                 else if (cunt==2)
                 {
                     inning.setText("Points Table");
-                    pointAdpter adpter=new pointAdpter(getActivity(),response.getPointList());
+                    pointAdpter adpter=new pointAdpter(getActivity(),pointArrayList);
                     recycleView.setAdapter(adpter);
                     adpter.notifyDataSetChanged();
                     cunt=0;
@@ -149,7 +154,27 @@ public class IplFragment extends Fragment {
                 response = new Gson().fromJson(str, PointTable.class);
                 Log.d("TAG", "onSuccess: "+response);
 
-                pointAdpter adpter=new pointAdpter(getActivity(),response.getPointList());
+
+                for (int i=0;i<response.getPointList().size();i++)
+                {
+                    Log.d("TAG", "onSuccess: "+response.getPointList().get(i).getRank());
+                    for (int i1=0;i1<response.getPointList().size();i1++) {
+                        if (response.getPointList().get(i1).getRank().equals("" + (i + 1))) {
+                            Log.d("TAG", "onSuccess:23 " + response.getPointList().get(i1).getRank());
+                            pointArrayList.add(response.getPointList().get(i1));
+                        }
+                    }
+                }
+
+
+
+            }
+
+            @Override
+            public void onFinish() {
+                super.onFinish();
+
+                pointAdpter adpter=new pointAdpter(getActivity(),pointArrayList);
                 recycleView.setAdapter(adpter);
                 adpter.notifyDataSetChanged();
             }
@@ -196,7 +221,7 @@ public class IplFragment extends Fragment {
                     .placeholder(R.mipmap.ic_launcher)
                     .error(R.mipmap.ic_launcher)
                     .into(holder.teamImg);
-            holder.cardBG.setCardBackgroundColor(Color.parseColor(stringList.get(position)));
+            holder.cardBG.setBackgroundResource(stringList.get(position));
         }
 
         @Override
@@ -207,7 +232,7 @@ public class IplFragment extends Fragment {
         public class MyView extends RecyclerView.ViewHolder {
 
             ImageView teamImg;
-            CardView cardBG;
+            LinearLayout cardBG;
             TextView teamName,match,won,lost,tp,nrr,rank;
 
             public MyView(@NonNull View itemView) {

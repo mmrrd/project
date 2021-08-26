@@ -12,7 +12,9 @@
         app:cardBackgroundColor="#838383"
         app:cardCornerRadius="@dimen/_15sdp">
 
+
         <RelativeLayout
+            android:id="@+id/cardBG"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 

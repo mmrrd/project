@@ -12,8 +12,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
+import com.riya.livecricket.LiveMatchActivity;
 import com.riya.livecricket.modal.AllMatch;
 import com.riya.livecricket.ApiClient;
 import com.riya.livecricket.ApiInterface;
@@ -88,6 +90,8 @@ public class MatchFragment extends Fragment {
             public void onFailure(Call<AllMatch> call, Throwable t) {
                 // Log error here since request failed
                 Log.e("TAG", t.toString());
+                Toast.makeText(getActivity(), "Please Check Your Internet Connecation...", Toast.LENGTH_SHORT).show();
+
             }
         });
 

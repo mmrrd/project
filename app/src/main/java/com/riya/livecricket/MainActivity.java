@@ -22,8 +22,8 @@ public class MainActivity extends AppCompatActivity {
 
         tabLayout.addTab(tabLayout.newTab().setText("Matches"));
         tabLayout.addTab(tabLayout.newTab().setText("IPL"));
-        tabLayout.addTab(tabLayout.newTab().setText("News"));
         tabLayout.addTab(tabLayout.newTab().setText("Fantasy"));
+        tabLayout.addTab(tabLayout.newTab().setText("News"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         viewPager = (ViewPager) findViewById(R.id.pager);

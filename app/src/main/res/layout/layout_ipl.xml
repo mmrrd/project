@@ -7,17 +7,17 @@
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardBG"
+       android:padding="@dimen/_6sdp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="@dimen/_15sdp">
 
 
         <LinearLayout
+            android:id="@+id/cardBG"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:layout_margin="@dimen/_6sdp"
             android:orientation="horizontal"
             android:weightSum="4">
 

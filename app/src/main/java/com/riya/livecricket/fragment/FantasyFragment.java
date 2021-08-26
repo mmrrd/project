@@ -14,6 +14,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,6 +38,7 @@ import cz.msebera.android.httpclient.Header;
 public class FantasyFragment extends Fragment {
 
     RecyclerView recycleView;
+    List<Integer> stringList=new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -45,6 +48,15 @@ public class FantasyFragment extends Fragment {
 
         recycleView = view.findViewById(R.id.recycleView);
         recycleView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        stringList.add(R.drawable.gradient_1);
+        stringList.add(R.drawable.gradient_2);
+        stringList.add(R.drawable.gradient_3);
+        stringList.add(R.drawable.gradient_4);
+        stringList.add(R.drawable.gradient_5);
+        stringList.add(R.drawable.gradient_6);
+        stringList.add(R.drawable.gradient_7);
+        stringList.add(R.drawable.gradient_8);
 
         AsyncHttpClient client = new AsyncHttpClient();
         client.get("https://lifecarepost.com/rational/crick11/prediction.php", new AsyncHttpResponseHandler() {
@@ -105,11 +117,13 @@ public class FantasyFragment extends Fragment {
 
 
             holder.txt_title.setText(predictionsArrayList.get(position).getTitle());
+            holder.cardBG.setBackgroundResource(stringList.get(position));
 
             holder.img.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     startActivity(new Intent(getActivity(), FantacyDetailActivity.class)
+                            .putExtra("position", position)
                             .putExtra("img", predictionsArrayList.get(position).getImg1())
                             .putExtra("title", predictionsArrayList.get(position).getTitle())
                             .putExtra("detail", predictionsArrayList.get(position).getDesc()));
@@ -127,12 +141,14 @@ public class FantasyFragment extends Fragment {
 
             TextView txt_title;
             ImageView img;
+            RelativeLayout cardBG;
 
             public MyView(@NonNull View itemView) {
                 super(itemView);
 
                 img = itemView.findViewById(R.id.img);
                 txt_title = itemView.findViewById(R.id.txt_title);
+                cardBG = itemView.findViewById(R.id.cardBG);
 
             }
         }

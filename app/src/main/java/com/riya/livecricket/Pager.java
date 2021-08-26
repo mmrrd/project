@@ -33,11 +33,12 @@ public class Pager extends FragmentStatePagerAdapter {
                 IplFragment tab2 = new IplFragment();
                 return tab2;
             case 2:
-                NewsFragment tab3 = new NewsFragment();
-                return tab3;
-            case 3:
                 FantasyFragment tab4 = new FantasyFragment();
                 return tab4;
+            case 3:
+                NewsFragment tab3 = new NewsFragment();
+                return tab3;
+
             default:
                 return null;
         }
