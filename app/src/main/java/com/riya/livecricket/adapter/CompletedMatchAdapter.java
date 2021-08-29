@@ -126,16 +126,6 @@ public class CompletedMatchAdapter extends PagerAdapter {
         String date1 = tk.nextToken();
         String time1 = tk.nextToken();
 
-//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
-//        SimpleDateFormat sdfs = new SimpleDateFormat("EEE, d MMM, yyyy");
-//        Date dt;
-//        try {
-//            dt = sdf.parse(date1);
-//            day.setText(sdfs.format(dt));
-//        } catch (ParseException e) {
-//            e.printStackTrace();
-//        }
-
         SimpleDateFormat sdf1 = new SimpleDateFormat("hh:mm:ss");
         SimpleDateFormat sdfs1 = new SimpleDateFormat("h:mm a");
         Date dt1;

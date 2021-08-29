@@ -265,8 +265,8 @@ public class LiveMatchActivity extends AppCompatActivity {
                 else if (details.getFixture().getInnings().size()>=3)
                 {
 
-                    score1.setText(details.getFixture().getInnings().get(details.getFixture().getInnings().size()-2).getRunsScored()+"/"+details.getFixture().getInnings().get(details.getFixture().getInnings().size()-2).getNumberOfWicketsFallen()+"("+details.getFixture().getInnings().get(details.getFixture().getInnings().size()-2).getOversBowled()+")");
-                    score2.setText(details.getFixture().getInnings().get(details.getFixture().getInnings().size()-1).getRunsScored()+"/"+details.getFixture().getInnings().get(details.getFixture().getInnings().size()-1).getNumberOfWicketsFallen()+"("+details.getFixture().getInnings().get(details.getFixture().getInnings().size()-1).getOversBowled()+")");
+                    score1.setText(details.getFixture().getInnings().get(details.getFixture().getInnings().size()-1).getRunsScored()+"/"+details.getFixture().getInnings().get(details.getFixture().getInnings().size()-1).getNumberOfWicketsFallen()+"("+details.getFixture().getInnings().get(details.getFixture().getInnings().size()-1).getOversBowled()+")");
+                    score2.setText(details.getFixture().getInnings().get(details.getFixture().getInnings().size()-2).getRunsScored()+"/"+details.getFixture().getInnings().get(details.getFixture().getInnings().size()-2).getNumberOfWicketsFallen()+"("+details.getFixture().getInnings().get(details.getFixture().getInnings().size()-2).getOversBowled()+")");
 
                 }
 

@@ -2,9 +2,12 @@ package com.riya.livecricket.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.icu.text.DateFormat;
 import android.icu.text.SimpleDateFormat;
 import android.icu.util.Calendar;
+import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,9 +20,11 @@ import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
 import com.riya.livecricket.R;
+import com.riya.livecricket.UpcomingDetailActiviy;
 import com.riya.livecricket.modal.AllMatch;
 import com.squareup.picasso.Picasso;
 
+import java.io.Serializable;
 import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
@@ -66,6 +71,17 @@ public class UpcomingMatchAdapter extends PagerAdapter {
         ImageView img_2 = itemView.findViewById(R.id.img_2);
         TextView time = itemView.findViewById(R.id.time);
         TextView day = itemView.findViewById(R.id.day);
+        LinearLayout li_click = itemView.findViewById(R.id.li_click);
+
+        li_click.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                context.startActivity(new Intent(context, UpcomingDetailActiviy.class)
+                        .putExtra("position", position));
+            }
+        });
 
         matchname.setText(allMatches.get(position).getGameType() + "|" + allMatches.get(position).getCompetition().getFormats().get(0).getAssociatedMatchType());
 
@@ -83,11 +99,11 @@ public class UpcomingMatchAdapter extends PagerAdapter {
 
         Log.d("TAG", "instantiateItem: " + allMatches.get(position).getStartDateTime());
 
-        String s=allMatches.get(position).getStartDateTime();
-        String s1=s.replace("T"," ");
-        String s2 = s1.replace("Z","");
+        String s = allMatches.get(position).getStartDateTime();
+        String s1 = s.replace("T", " ");
+        String s2 = s1.replace("Z", "");
 
-        Log.d("TAG", "instantiateItem:== "+s2);
+        Log.d("TAG", "instantiateItem:== " + s2);
 
         StringTokenizer tk = new StringTokenizer(s2);
         String date1 = tk.nextToken();
@@ -113,7 +129,6 @@ public class UpcomingMatchAdapter extends PagerAdapter {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-
 
 
         // Adding the View

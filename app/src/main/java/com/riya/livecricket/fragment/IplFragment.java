@@ -29,6 +29,7 @@ import com.riya.livecricket.ApiClient;
 import com.riya.livecricket.ApiInterface;
 import com.riya.livecricket.CompletedMatchActivity;
 import com.riya.livecricket.R;
+import com.riya.livecricket.UpcomingDetailActiviy;
 import com.riya.livecricket.modal.AllMatch;
 import com.riya.livecricket.modal.PointTable;
 import com.riya.livecricket.modal.Predictions;
@@ -274,7 +275,15 @@ public class IplFragment extends Fragment {
 
         @SuppressLint("NewApi")
         @Override
-        public void onBindViewHolder(@NonNull UpComingAdpter.MyView holder, int position) {
+        public void onBindViewHolder(@NonNull UpComingAdpter.MyView holder, final int position) {
+
+            holder.li_click.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    context.startActivity(new Intent(context, UpcomingDetailActiviy.class)
+                            .putExtra("position",position));
+                }
+            });
 
             holder.matchname.setText(allMatches.get(position).getGameType() + "|" + allMatches.get(position).getCompetition().getFormats().get(0).getAssociatedMatchType());
 
@@ -335,6 +344,7 @@ public class IplFragment extends Fragment {
 
             TextView match_1,match_2,matchname,time,day;
             ImageView img_1,img_2;
+            LinearLayout li_click;
 
             public MyView(@NonNull View itemView) {
                 super(itemView);
@@ -346,6 +356,7 @@ public class IplFragment extends Fragment {
                  img_2 = itemView.findViewById(R.id.img_2);
                  time = itemView.findViewById(R.id.time);
                  day = itemView.findViewById(R.id.day);
+                li_click = itemView.findViewById(R.id.li_click);
             }
         }
     }
@@ -373,9 +384,17 @@ public class IplFragment extends Fragment {
 
         @SuppressLint("NewApi")
         @Override
-        public void onBindViewHolder(@NonNull CompletedAdpter.MyView holder, int position) {
+        public void onBindViewHolder(@NonNull CompletedAdpter.MyView holder, final int position) {
 
-
+            holder.li_click.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    context.startActivity(new Intent(context, CompletedMatchActivity.class)
+                            .putExtra("matchId",allMatches.get(position).getId())
+                            .putExtra("homeTeamId", allMatches.get(position).getHomeTeamId())
+                            .putExtra("awayTeamId", allMatches.get(position).getAwayTeamId()));
+                }
+            });
 
             holder.matchname.setText(allMatches.get(position).getName()+"|"+allMatches.get(position).getCompetition().getFormats().get(0).getDisplayName());
 
@@ -437,6 +456,9 @@ public class IplFragment extends Fragment {
             }
 
 
+
+
+
         }
 
         @Override
@@ -448,6 +470,7 @@ public class IplFragment extends Fragment {
 
             TextView match_1,match_2,matchname,time,won;
             CircleImageView img_1,img_2;
+            LinearLayout li_click;
 
             public MyView(@NonNull View itemView) {
                 super(itemView);
@@ -459,6 +482,7 @@ public class IplFragment extends Fragment {
                  img_2 = itemView.findViewById(R.id.img_2);
                 won = itemView.findViewById(R.id.won);
                 time = itemView.findViewById(R.id.time);
+                li_click = itemView.findViewById(R.id.li_click);
 
 
             }

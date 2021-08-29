@@ -54,53 +54,53 @@ public class CurrentMatchAdapter extends RecyclerView.Adapter<CurrentMatchAdapte
                 .error(R.mipmap.ic_launcher)
                 .into(holder.img2);
 
-        Log.d("TAG", "onBindViewHolder: "+allMatches.get(position).getInnings().size());
+        for (int i=0;i<allMatches.get(position).getInnings().size();i++)
+        {
+            if (allMatches.get(position).getAwayTeamId().equals(allMatches.get(position).getInnings().get(i).getBattingTeamId()))
+            {
+                Log.d("TAG", "onBindViewHolder:BattingTeam "+allMatches.get(position).getInnings().get(i).getBattingTeamId());
+                holder.li_1.setBackgroundResource(R.color.blue);
+                holder.li_2.setBackgroundResource(R.color.white);
+                holder.match_1.setTextColor(ContextCompat.getColor(context,R.color.white));
+                holder.match_2.setTextColor(ContextCompat.getColor(context,R.color.black));
+                holder.score_1.setTextColor(ContextCompat.getColor(context,R.color.white));
+                holder.score_2.setTextColor(ContextCompat.getColor(context,R.color.black));
+                holder.over_1.setTextColor(ContextCompat.getColor(context,R.color.white));
+                holder.over_2.setTextColor(ContextCompat.getColor(context,R.color.black));
 
+            }
+            else
+            {
+                holder.li_1.setBackgroundResource(R.color.white);
+                holder.li_2.setBackgroundResource(R.color.blue);
+                holder.match_1.setTextColor(ContextCompat.getColor(context,R.color.black));
+                holder.match_2.setTextColor(ContextCompat.getColor(context,R.color.white));
+                holder.score_1.setTextColor(ContextCompat.getColor(context,R.color.black));
+                holder.score_2.setTextColor(ContextCompat.getColor(context,R.color.white));
+                holder.over_1.setTextColor(ContextCompat.getColor(context,R.color.black));
+                holder.over_2.setTextColor(ContextCompat.getColor(context,R.color.white));
+
+            }
+
+        }
         if (allMatches.get(position).getInnings().size()==1)
         {
-            holder.li_1.setBackgroundResource(R.color.blue);
-            holder.li_2.setBackgroundResource(R.color.white);
-            holder.match_1.setTextColor(ContextCompat.getColor(context,R.color.white));
-            holder.match_2.setTextColor(ContextCompat.getColor(context,R.color.black));
-            holder.score_1.setTextColor(ContextCompat.getColor(context,R.color.white));
-            holder.score_2.setTextColor(ContextCompat.getColor(context,R.color.black));
-            holder.over_1.setTextColor(ContextCompat.getColor(context,R.color.white));
-            holder.over_2.setTextColor(ContextCompat.getColor(context,R.color.black));
-            holder.score_1.setText(allMatches.get(position).getInnings().get(0).getRunsScored() + "/" + allMatches.get(position).getInnings().get(0).getNumberOfWicketsFallen());
+            holder.score_1.setText(allMatches.get(position).getInnings().get(0).getRunsScored() + "/" + allMatches.get(position).getInnings().get(0).getNumberOfWicketsFallen()+"("+allMatches.get(position).getInnings().get(0).getOversBowled()+")");
             holder.score_2.setText("0/0");
-            holder.over_1.setText("("+allMatches.get(position).getInnings().get(0).getOversBowled()+")");
-            holder.over_2.setText("");
         }
-        else  if (allMatches.get(position).getInnings().size()==2)
+        else if (allMatches.get(position).getInnings().size()==2)
         {
-            holder.match_1.setTextColor(ContextCompat.getColor(context,R.color.black));
-            holder.match_2.setTextColor(ContextCompat.getColor(context,R.color.white));
-            holder.score_1.setTextColor(ContextCompat.getColor(context,R.color.black));
-            holder.score_2.setTextColor(ContextCompat.getColor(context,R.color.white));
-            holder.over_1.setTextColor(ContextCompat.getColor(context,R.color.black));
-            holder.over_2.setTextColor(ContextCompat.getColor(context,R.color.white));
-            holder.li_1.setBackgroundResource(R.color.white);
-            holder.li_2.setBackgroundResource(R.color.blue);
-            holder.score_1.setText(allMatches.get(position).getInnings().get(0).getRunsScored() + "/" + allMatches.get(position).getInnings().get(0).getNumberOfWicketsFallen());
-            holder.score_2.setText(allMatches.get(position).getInnings().get(1).getRunsScored() + "/" + allMatches.get(position).getInnings().get(1).getNumberOfWicketsFallen());
-            holder.over_1.setText("("+allMatches.get(position).getInnings().get(0).getOversBowled()+")");
-            holder.over_2.setText("("+allMatches.get(position).getInnings().get(1).getOversBowled()+")");
+            holder.score_1.setText(allMatches.get(position).getInnings().get(0).getRunsScored() + "/" + allMatches.get(position).getInnings().get(0).getNumberOfWicketsFallen()+"("+allMatches.get(position).getInnings().get(0).getOversBowled()+")");
+            holder.score_2.setText(allMatches.get(position).getInnings().get(1).getRunsScored() + "/" + allMatches.get(position).getInnings().get(1).getNumberOfWicketsFallen()+"("+allMatches.get(position).getInnings().get(1).getOversBowled()+")");
+
         }
         else if (allMatches.get(position).getInnings().size()>=3)
         {
-            holder.match_1.setTextColor(ContextCompat.getColor(context,R.color.white));
-            holder.match_2.setTextColor(ContextCompat.getColor(context,R.color.black));
-            holder.score_1.setTextColor(ContextCompat.getColor(context,R.color.white));
-            holder.score_2.setTextColor(ContextCompat.getColor(context,R.color.black));
-            holder.over_1.setTextColor(ContextCompat.getColor(context,R.color.white));
-            holder.over_2.setTextColor(ContextCompat.getColor(context,R.color.black));
-            holder.li_1.setBackgroundResource(R.color.white);
-            holder.li_2.setBackgroundResource(R.color.blue);
-            holder.score_1.setText(allMatches.get(position).getInnings().get(allMatches.get(position).getInnings().size()-2).getRunsScored() + "/" + allMatches.get(position).getInnings().get(allMatches.get(position).getInnings().size()-2).getNumberOfWicketsFallen());
-            holder.score_2.setText(allMatches.get(position).getInnings().get(allMatches.get(position).getInnings().size()-1).getRunsScored() + "/" + allMatches.get(position).getInnings().get(allMatches.get(position).getInnings().size()-1).getNumberOfWicketsFallen());
-            holder.over_1.setText("("+allMatches.get(position).getInnings().get(allMatches.get(position).getInnings().size()-2).getOversBowled()+")");
-            holder.over_2.setText("("+allMatches.get(position).getInnings().get(allMatches.get(position).getInnings().size()-1).getOversBowled()+")");
+            holder.score_1.setText(allMatches.get(position).getInnings().get(allMatches.get(position).getInnings().size()-1).getRunsScored() + "/" + allMatches.get(position).getInnings().get(allMatches.get(position).getInnings().size()-1).getNumberOfWicketsFallen()+"("+allMatches.get(position).getInnings().get(allMatches.get(position).getInnings().size()-1).getOversBowled()+")");
+            holder.score_2.setText(allMatches.get(position).getInnings().get(allMatches.get(position).getInnings().size()-2).getRunsScored() + "/" + allMatches.get(position).getInnings().get(allMatches.get(position).getInnings().size()-2).getNumberOfWicketsFallen()+"("+allMatches.get(position).getInnings().get(allMatches.get(position).getInnings().size()-2).getOversBowled()+")");
+
         }
+
 
 
         holder.liveMatch.setOnClickListener(new View.OnClickListener() {
