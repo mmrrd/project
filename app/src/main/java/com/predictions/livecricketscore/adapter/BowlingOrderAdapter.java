@@ -83,6 +83,12 @@ public class BowlingOrderAdapter extends PagerAdapter {
                             .into(img);
 //                    Picasso.with(context).load(playerList.get(i).getImageUrl()).into(img);
                 }
+                else
+                {
+                    Picasso.with(context).load(R.mipmap.ic_launcher).placeholder(R.mipmap.ic_launcher)
+                            .error(R.mipmap.ic_launcher).into(img);
+
+                }
 
             }
         }

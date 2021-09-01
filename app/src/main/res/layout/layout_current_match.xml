@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:cardBackgroundColor="@color/white"
-        android:layout_margin="@dimen/_5sdp"
+        android:layout_margin="@dimen/_8sdp"
         app:cardCornerRadius="@dimen/_15sdp">
 
         <LinearLayout
@@ -72,7 +72,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/_10sdp"
-                            android:text="name"
+                            android:text="-"
                             android:fontFamily="@font/poppi"
                             android:textColor="@color/white"
                             android:textSize="@dimen/_12sdp" />
@@ -131,7 +131,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/_10sdp"
-                            android:text="name"
+                            android:text="-"
                             android:fontFamily="@font/poppi"
                             android:textColor="@color/black"
                             android:textSize="@dimen/_12sdp" />
@@ -159,11 +159,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/_5sdp"
+                    android:layout_margin="@dimen/_2sdp"
                     android:text="Live"
                     android:fontFamily="@font/poppi"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/_12sdp"
                     android:textStyle="bold" />
 
             </LinearLayout>

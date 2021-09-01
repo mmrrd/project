@@ -20,7 +20,7 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 import java.util.Objects;
 
-public class BattingOrderAdapter extends PagerAdapter {
+public class BattingOrderAdapter1 extends PagerAdapter {
 
 
     // Context object
@@ -35,7 +35,7 @@ public class BattingOrderAdapter extends PagerAdapter {
 
 
     // Viewpager Constructor
-    public BattingOrderAdapter(Context context, List<DetailModal.Batsman> allMatches, List<DetailModal.Player> playerList) {
+    public BattingOrderAdapter1(Context context, List<DetailModal.Batsman> allMatches, List<DetailModal.Player> playerList) {
         this.context = context;
         this.detailModals = allMatches;
         this.playerList = playerList;
@@ -58,7 +58,7 @@ public class BattingOrderAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(@NonNull final ViewGroup container, final int position) {
         // inflating the item.xml
-        View itemView = mLayoutInflater.inflate(R.layout.layout_batting, container, false);
+        View itemView = mLayoutInflater.inflate(R.layout.layout_batting1, container, false);
 
         TextView name = itemView.findViewById(R.id.name);
         TextView score = itemView.findViewById(R.id.score);
@@ -80,18 +80,15 @@ public class BattingOrderAdapter extends PagerAdapter {
 
                 if (!playerList.get(i).getImageUrl().equals("")) {
 
-                    Picasso.with(context).load(playerList.get(i).getImageUrl())
-                            .placeholder(R.mipmap.ic_launcher)
+                    Picasso.with(context).load(playerList.get(i).getImageUrl()).placeholder(R.mipmap.ic_launcher)
                             .error(R.mipmap.ic_launcher).into(img);
                 }
                 else
                 {
-                    Picasso.with(context).load(R.mipmap.ic_launcher)
-                            .placeholder(R.mipmap.ic_launcher)
+                    Picasso.with(context).load(R.mipmap.ic_launcher).placeholder(R.mipmap.ic_launcher)
                             .error(R.mipmap.ic_launcher).into(img);
 
                 }
-
 //                    order.setText(detailModals.get(position).getBattingOrder());
 
             }

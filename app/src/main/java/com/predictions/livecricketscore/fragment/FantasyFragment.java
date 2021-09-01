@@ -36,6 +36,7 @@ public class FantasyFragment extends Fragment {
 
     RecyclerView recycleView;
     List<Integer> stringList=new ArrayList<>();
+    RelativeLayout progressBar;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,7 +45,12 @@ public class FantasyFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_fantasy, container, false);
 
         recycleView = view.findViewById(R.id.recycleView);
+        progressBar=view.findViewById(R.id.progressBar);
+
         recycleView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        recycleView.setVisibility(View.GONE);
+        progressBar.setVisibility(View.VISIBLE);
 
         stringList.add(R.drawable.gradient_1);
         stringList.add(R.drawable.gradient_2);
@@ -61,6 +67,11 @@ public class FantasyFragment extends Fragment {
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+
+
+                recycleView.setVisibility(View.VISIBLE);
+                progressBar.setVisibility(View.GONE);
+
                 String str = null;
                 try {
                     str = new String(responseBody, "UTF-8");
@@ -78,6 +89,9 @@ public class FantasyFragment extends Fragment {
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+
+                recycleView.setVisibility(View.GONE);
+                progressBar.setVisibility(View.GONE);
                 Toast.makeText(getActivity(), "Check your internet connection", Toast.LENGTH_SHORT).show();
             }
         });

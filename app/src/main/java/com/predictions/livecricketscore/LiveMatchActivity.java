@@ -250,22 +250,22 @@ public class LiveMatchActivity extends AppCompatActivity {
                 if (details.getFixture().getInnings().size()==1)
                 {
 
-                    score1.setText(details.getFixture().getInnings().get(0).getRunsScored()+"/"+details.getFixture().getInnings().get(0).getNumberOfWicketsFallen()+"("+details.getFixture().getInnings().get(0).getOversBowled()+")");
+                    score1.setText(details.getFixture().getInnings().get(0).getRunsScored()+"/"+details.getFixture().getInnings().get(0).getNumberOfWicketsFallen()+" ("+details.getFixture().getInnings().get(0).getOversBowled()+")");
                     score2.setText("0/0");
 
                 }
                 else if (details.getFixture().getInnings().size()==2)
                 {
 
-                    score1.setText(details.getFixture().getInnings().get(0).getRunsScored()+"/"+details.getFixture().getInnings().get(0).getNumberOfWicketsFallen()+"("+details.getFixture().getInnings().get(0).getOversBowled()+")");
-                    score2.setText(details.getFixture().getInnings().get(1).getRunsScored()+"/"+details.getFixture().getInnings().get(1).getNumberOfWicketsFallen()+"("+details.getFixture().getInnings().get(1).getOversBowled()+")");
+                    score1.setText(details.getFixture().getInnings().get(0).getRunsScored()+"/"+details.getFixture().getInnings().get(0).getNumberOfWicketsFallen()+" ("+details.getFixture().getInnings().get(0).getOversBowled()+")");
+                    score2.setText(details.getFixture().getInnings().get(1).getRunsScored()+"/"+details.getFixture().getInnings().get(1).getNumberOfWicketsFallen()+" ("+details.getFixture().getInnings().get(1).getOversBowled()+")");
 
                 }
                 else if (details.getFixture().getInnings().size()>=3)
                 {
 
-                    score1.setText(details.getFixture().getInnings().get(details.getFixture().getInnings().size()-1).getRunsScored()+"/"+details.getFixture().getInnings().get(details.getFixture().getInnings().size()-1).getNumberOfWicketsFallen()+"("+details.getFixture().getInnings().get(details.getFixture().getInnings().size()-1).getOversBowled()+")");
-                    score2.setText(details.getFixture().getInnings().get(details.getFixture().getInnings().size()-2).getRunsScored()+"/"+details.getFixture().getInnings().get(details.getFixture().getInnings().size()-2).getNumberOfWicketsFallen()+"("+details.getFixture().getInnings().get(details.getFixture().getInnings().size()-2).getOversBowled()+")");
+                    score1.setText(details.getFixture().getInnings().get(details.getFixture().getInnings().size()-1).getRunsScored()+"/"+details.getFixture().getInnings().get(details.getFixture().getInnings().size()-1).getNumberOfWicketsFallen()+" ("+details.getFixture().getInnings().get(details.getFixture().getInnings().size()-1).getOversBowled()+")");
+                    score2.setText(details.getFixture().getInnings().get(details.getFixture().getInnings().size()-2).getRunsScored()+"/"+details.getFixture().getInnings().get(details.getFixture().getInnings().size()-2).getNumberOfWicketsFallen()+" ("+details.getFixture().getInnings().get(details.getFixture().getInnings().size()-2).getOversBowled()+")");
 
                 }
 

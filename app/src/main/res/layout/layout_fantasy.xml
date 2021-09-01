@@ -3,13 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/_120sdp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:layout_margin="@dimen/_4sdp">
+    android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardBackgroundColor="#838383"
+        android:layout_margin="@dimen/_8sdp"
         app:cardCornerRadius="@dimen/_15sdp">
 
 
@@ -35,10 +35,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/_10sdp"
                     android:textStyle="bold"
                     android:fontFamily="@font/poppi"
-                    android:layout_margin="@dimen/_6sdp"/>
+                    android:layout_margin="@dimen/_2sdp"/>
 
 
             </LinearLayout>

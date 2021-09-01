@@ -78,7 +78,7 @@ public class UpcomingMatchAdapter extends PagerAdapter {
             }
         });
 
-        matchname.setText(allMatches.get(position).getGameType() + "|" + allMatches.get(position).getCompetition().getFormats().get(0).getAssociatedMatchType());
+        matchname.setText(allMatches.get(position).getGameType() + " | " + allMatches.get(position).getCompetition().getFormats().get(0).getAssociatedMatchType());
 
         match_1.setText(allMatches.get(position).getAwayTeam().getShortName());
         match_2.setText(allMatches.get(position).getHomeTeam().getShortName());

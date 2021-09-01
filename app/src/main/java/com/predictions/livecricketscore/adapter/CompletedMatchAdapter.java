@@ -71,7 +71,7 @@ public class CompletedMatchAdapter extends PagerAdapter {
         CircleImageView img_2 = itemView.findViewById(R.id.img_2);
         LinearLayout li_click = itemView.findViewById(R.id.li_click);
 
-        matchname.setText(allMatches.get(position).getName()+"|"+allMatches.get(position).getCompetition().getFormats().get(0).getDisplayName());
+        matchname.setText(allMatches.get(position).getName()+" | "+allMatches.get(position).getCompetition().getFormats().get(0).getDisplayName());
 
         String score1 = "";
         String score2 = "";

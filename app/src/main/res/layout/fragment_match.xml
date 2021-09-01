@@ -8,6 +8,7 @@
     tools:context=".fragment.MatchFragment">
 
     <ScrollView
+        android:id="@+id/sv"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -23,7 +24,7 @@
                 android:fontFamily="@font/poppi"
                 android:text="Matches for you"
                 android:textColor="@color/darkPink"
-                android:textSize="@dimen/_15sdp"
+                android:textSize="@dimen/_12sdp"
                 android:textStyle="bold" />
 
 
@@ -55,7 +56,7 @@
                 android:layout_margin="@dimen/_5sdp"
                 android:text="Upcoming Matches"
                 android:textColor="@color/darkPink"
-                android:textSize="@dimen/_15sdp"
+                android:textSize="@dimen/_12sdp"
                 android:fontFamily="@font/poppi"
                 android:textStyle="bold" />
 
@@ -89,7 +90,7 @@
                 android:text="Completed Matches"
                 android:fontFamily="@font/poppi"
                 android:textColor="@color/darkPink"
-                android:textSize="@dimen/_15sdp"
+                android:textSize="@dimen/_12sdp"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -116,6 +117,19 @@
         </LinearLayout>
     </ScrollView>
 
+    <RelativeLayout
+        android:id="@+id/progressBar"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <ProgressBar
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_centerInParent="true"/>
+
+    </RelativeLayout>
 
 
 </LinearLayout>

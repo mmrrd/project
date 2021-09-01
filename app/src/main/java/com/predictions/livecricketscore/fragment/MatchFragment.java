@@ -11,6 +11,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,6 +34,8 @@ public class MatchFragment extends Fragment {
     UpcomingMatchAdapter upcomingMatchAdapter;
     CompletedMatchAdapter completedMatchAdapter;
     public static AllMatch team;
+    ScrollView sv;
+    RelativeLayout progressBar;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -39,6 +43,11 @@ public class MatchFragment extends Fragment {
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_match, container, false);
 
+        sv=view.findViewById(R.id.sv);
+        progressBar=view.findViewById(R.id.progressBar);
+
+        sv.setVisibility(View.GONE);
+        progressBar.setVisibility(View.VISIBLE);
 
         ApiInterface apiService = ApiClient.getClient("https://apiv2.cricket.com.au/web/views/").create(ApiInterface.class);
 
@@ -47,6 +56,9 @@ public class MatchFragment extends Fragment {
             @Override
             public void onResponse(Call<AllMatch> call, Response<AllMatch> response) {
 
+
+                sv.setVisibility(View.VISIBLE);
+                progressBar.setVisibility(View.GONE);
 
                 team = response.body();
 
@@ -90,6 +102,8 @@ public class MatchFragment extends Fragment {
                 // Log error here since request failed
                 Log.e("TAG", t.toString());
                 Toast.makeText(getActivity(), "Please Check Your Internet Connecation...", Toast.LENGTH_SHORT).show();
+                sv.setVisibility(View.GONE);
+                progressBar.setVisibility(View.GONE);
 
             }
         });

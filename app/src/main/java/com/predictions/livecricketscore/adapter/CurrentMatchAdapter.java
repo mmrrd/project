@@ -85,19 +85,19 @@ public class CurrentMatchAdapter extends RecyclerView.Adapter<CurrentMatchAdapte
         }
         if (allMatches.get(position).getInnings().size()==1)
         {
-            holder.score_1.setText(allMatches.get(position).getInnings().get(0).getRunsScored() + "/" + allMatches.get(position).getInnings().get(0).getNumberOfWicketsFallen()+"("+allMatches.get(position).getInnings().get(0).getOversBowled()+")");
+            holder.score_1.setText(allMatches.get(position).getInnings().get(0).getRunsScored() + "/" + allMatches.get(position).getInnings().get(0).getNumberOfWicketsFallen()+" ("+allMatches.get(position).getInnings().get(0).getOversBowled()+")");
             holder.score_2.setText("0/0");
         }
         else if (allMatches.get(position).getInnings().size()==2)
         {
-            holder.score_1.setText(allMatches.get(position).getInnings().get(0).getRunsScored() + "/" + allMatches.get(position).getInnings().get(0).getNumberOfWicketsFallen()+"("+allMatches.get(position).getInnings().get(0).getOversBowled()+")");
-            holder.score_2.setText(allMatches.get(position).getInnings().get(1).getRunsScored() + "/" + allMatches.get(position).getInnings().get(1).getNumberOfWicketsFallen()+"("+allMatches.get(position).getInnings().get(1).getOversBowled()+")");
+            holder.score_1.setText(allMatches.get(position).getInnings().get(0).getRunsScored() + "/" + allMatches.get(position).getInnings().get(0).getNumberOfWicketsFallen()+" ("+allMatches.get(position).getInnings().get(0).getOversBowled()+")");
+            holder.score_2.setText(allMatches.get(position).getInnings().get(1).getRunsScored() + "/" + allMatches.get(position).getInnings().get(1).getNumberOfWicketsFallen()+" ("+allMatches.get(position).getInnings().get(1).getOversBowled()+")");
 
         }
-        else
+        else if (allMatches.get(position).getInnings().size()>=3)
         {
-            holder.score_1.setText(allMatches.get(position).getInnings().get(allMatches.get(position).getInnings().size()-1).getRunsScored() + "/" + allMatches.get(position).getInnings().get(allMatches.get(position).getInnings().size()-1).getNumberOfWicketsFallen()+"("+allMatches.get(position).getInnings().get(allMatches.get(position).getInnings().size()-1).getOversBowled()+")");
-            holder.score_2.setText(allMatches.get(position).getInnings().get(allMatches.get(position).getInnings().size()-2).getRunsScored() + "/" + allMatches.get(position).getInnings().get(allMatches.get(position).getInnings().size()-2).getNumberOfWicketsFallen()+"("+allMatches.get(position).getInnings().get(allMatches.get(position).getInnings().size()-2).getOversBowled()+")");
+            holder.score_1.setText(allMatches.get(position).getInnings().get(allMatches.get(position).getInnings().size()-1).getRunsScored() + "/" + allMatches.get(position).getInnings().get(allMatches.get(position).getInnings().size()-1).getNumberOfWicketsFallen()+" ("+allMatches.get(position).getInnings().get(allMatches.get(position).getInnings().size()-1).getOversBowled()+")");
+            holder.score_2.setText(allMatches.get(position).getInnings().get(allMatches.get(position).getInnings().size()-2).getRunsScored() + "/" + allMatches.get(position).getInnings().get(allMatches.get(position).getInnings().size()-2).getNumberOfWicketsFallen()+" ("+allMatches.get(position).getInnings().get(allMatches.get(position).getInnings().size()-2).getOversBowled()+")");
 
         }
 

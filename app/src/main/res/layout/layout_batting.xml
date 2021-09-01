@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardBackgroundColor="#100F0F"
-        android:layout_margin="@dimen/_5sdp"
+        android:layout_margin="@dimen/_8sdp"
         app:cardCornerRadius="@dimen/_15sdp">
 
         <LinearLayout
@@ -102,8 +102,7 @@
                     android:fontFamily="@font/poppi"
                     android:textColor="@color/white"
                     android:textStyle="bold"
-                    android:textSize="@dimen/_12sdp"
-                    android:layout_margin="@dimen/_5sdp"/>
+                    android:layout_margin="@dimen/_2sdp"/>
 
             </LinearLayout>
         </LinearLayout>

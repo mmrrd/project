@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,6 +48,8 @@ public class IplFragment extends Fragment {
     int cunt=0;
     PointTable response;
     TextView inning;
+    LinearLayout layout;
+    RelativeLayout progressBar;
     ArrayList<PointTable.Point> pointArrayList=new ArrayList<>();
 
     @Override
@@ -56,7 +59,13 @@ public class IplFragment extends Fragment {
 
         inning=view.findViewById(R.id.inning);
         recycleView=view.findViewById(R.id.recycleView);
+        progressBar=view.findViewById(R.id.progressBar);
+        layout=view.findViewById(R.id.layout);
+
         recycleView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        layout.setVisibility(View.GONE);
+        progressBar.setVisibility(View.VISIBLE);
 
         stringList.add(R.drawable.gradient_1);
         stringList.add(R.drawable.gradient_2);
@@ -136,6 +145,10 @@ public class IplFragment extends Fragment {
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+
+                layout.setVisibility(View.VISIBLE);
+                progressBar.setVisibility(View.GONE);
+
                 String str = null;
                 try {
                     str = new String(responseBody, "UTF-8");
@@ -174,6 +187,8 @@ public class IplFragment extends Fragment {
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
                 Toast.makeText(getActivity(), "Check your internet connection", Toast.LENGTH_SHORT).show();
+                layout.setVisibility(View.GONE);
+                progressBar.setVisibility(View.GONE);
             }
         });
 
