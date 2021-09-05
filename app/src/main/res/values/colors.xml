@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#E53D3D</color>
     <color name="colorPrimaryDark">#E53D3D</color>
-    <color name="colorAccent">#03DAC5</color>
+    <color name="colorAccent">#E53D3D</color>
 
     <color name="darkPink">#E53D3D</color>
     <color name="white">#FFF</color>
